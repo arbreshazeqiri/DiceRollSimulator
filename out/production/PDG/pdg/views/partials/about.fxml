@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="350.0" spacing="15.0" style="-fx-background-color: -fx-color-pigwhite;" stylesheets="@../../resources/styles/app.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pdg.controllers.partials.AboutController">
+    <children>
+        <StackPane styleClass="about-card-img">
+            <children>
+                <ImageView fitHeight="202.0" fitWidth="213.0" pickOnBounds="true" StackPane.alignment="CENTER">
+                    <image>
+                        <Image url="@../../resources/images/logo.gif" />
+                    </image>
+                </ImageView>
+            </children>
+        </StackPane>
+        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="5.0" stylesheets="@../../resources/styles/app.css" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="appNameLabel" text="Pig Dice Game" wrapText="true" />
+                <Label fx:id="versionLabel" text="Version: 1.0.1" wrapText="true" />
+                <Label fx:id="releasedLabel" text="Released: July 2021" wrapText="true" />
+            </children>
+        </VBox>
+    </children>
+</HBox>
