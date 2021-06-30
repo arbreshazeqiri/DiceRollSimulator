@@ -1,0 +1,351 @@
+/* Palette */
+* {
+  -fx-color-light-blue: #61dafb;
+  -fx-color-light-blue-hover: #33c2f8;
+  -fx-color-light-green: #23947a;
+  -fx-color-light-green-hover: #29695a;
+  -fx-color-dark-blue: #192d3e;
+  -fx-color-dark-blue-hover: #122230;
+  -fx-color-black: #121212;
+  -fx-color-black-2: #161616;
+  -fx-color-purple-faded: #525e8a;
+  -fx-color-green: #00B99B;
+  -fx-color-green-hover: rgb(3, 161, 135);
+  -fx-color-yellow: #FFC107;
+  -fx-color-yellow-hover: rgb(228, 173, 7);
+  -fx-color-orange: #ff6f00;
+  -fx-color-orange-hover: #e06202;
+  -fx-color-red: #f44336;
+  -fx-color-red-hover: #cf372c;
+  -fx-color-light-gray: #dddddd;
+  -fx-color-mid-gray: #646464;
+  -fx-color-dark-gray: #222222;
+  -fx-color-pig3: #00252A;
+  -fx-color-pig4: #011D22;
+  -fx-color-dimmed-white: #F7F7F7;
+  -fx-color-white: #FFFFFF;
+  -fx-color-pigwhite: #fdf8ec;
+}
+
+/* General */
+@font-face {
+  font-family: 'Muli';
+  src: url('./muli.ttf');
+}
+
+.root {
+  -fx-background-color: -fx-color-dimmed-white;
+}
+
+.root, .root * {
+  -fx-font-family: "Muli";
+}
+
+
+/* Controls */
+.button {
+  -fx-border-width: 0;
+  -fx-border-radius: 4;
+  -fx-background-color: -fx-color-green;
+  -fx-padding: 7 10;
+  -fx-min-width: 100;
+  -fx-text-fill: -fx-color-pigwhite;
+}
+
+.button:hover, .button:active, .button:focus, .button:focused {
+  -fx-background-color: -fx-color-green-hover;
+  -fx-border-width: 0;
+}
+
+.button.btn-dark {
+  -fx-text-fill: -fx-color-dimmed-white;
+  -fx-background-color: -fx-color-dark-blue;
+}
+
+.button.btn-dark:hover, .button.btn-dark:active, .button.btn-dark:focus, .button.btn-dark:focused {
+  -fx-background-color: -fx-color-dark-blue-hover;
+}
+
+.button.btn-green {
+  -fx-text-fill: -fx-color-dimmed-white;
+  -fx-background-color: -fx-color-green;
+}
+
+.button.btn-green:hover, .button.btn-green:active, .button.btn-green:focus, .button.btn-green:focused {
+  -fx-background-color: -fx-color-green-hover;
+}
+
+.button.btn-red {
+  -fx-text-fill: -fx-color-dimmed-white;
+  -fx-background-color: -fx-color-red;
+}
+
+.button.btn-red:hover, .button.btn-red:active, .button.btn-red:focus, .button.btn-red:focused {
+  -fx-background-color: -fx-color-red-hover;
+}
+
+.button.btn-yellow {
+  -fx-background-color: -fx-color-yellow;
+}
+
+.button.btn-yellow:hover, .button.btn-yellow:active, .button.btn-yellow:focus, .button.btn-yellow:focused {
+  -fx-background-color: -fx-color-yellow-hover;
+}
+
+.button.btn-orange {
+  -fx-background-color: -fx-color-orange;
+}
+
+.button.btn-orange:hover, .button.btn-orange:active, .button.btn-orange:focus, .button.btn-orange:focused {
+  -fx-background-color: -fx-color-orange-hover;
+}
+
+.text-field, .text-area, .choice-box {
+  -fx-text-fill: -fx-color-black;
+  -fx-prompt-text-fill: -fx-color-light-gray;
+  -fx-background-color: -fx-color-white;
+  -fx-border-width: 1;
+  -fx-border-radius: 5;
+  -fx-border-color: -fx-color-light-gray;
+  -fx-text-box-border: -fx-color-white; 
+  -fx-control-inner-background: -fx-color-white;
+}
+
+.text-area .content {
+  -fx-background-color: -fx-color-white;
+  -fx-border-width: 0;
+}
+
+.text-field:focused,  .text-area:focused, .choice-box:focused {
+  -fx-border-width: 1.5;
+  -fx-border-color: -fx-color-light-green-hover;
+}
+
+.choice-box {
+  -fx-mark-color: -fx-color-light-gray;
+}
+
+.choice-box > .label {
+  -fx-text-fill: -fx-color-black;
+}
+.choice-box .context-menu {
+  -fx-background-color: -fx-color-white;
+}
+
+.choice-box .menu-item:focused {
+  -fx-background-color: -fx-color-light-blue-hover
+}
+
+.choice-box .menu-item > .label {
+  -fx-text-fill: -fx-color-black;
+}
+
+.choice-box .menu-item:focused > .label {
+  -fx-text-fill: -fx-color-black;
+}
+
+.check-box {
+  selected-box-color: -fx-color-light-blue-hover;
+  box-color: -fx-color-white;
+  mark-color: -fx-color-white;
+}
+
+.check-box:selected > .box {
+  -fx-background-color: selected-box-color;
+}
+
+.check-box > .box {
+  -fx-background-color: box-color;
+  -fx-border-width: 1;
+  -fx-border-radius: 5;
+  -fx-border-color: -fx-color-light-gray;
+}
+
+.check-box:focused > .box {
+  -fx-border-width: 1.5;
+  -fx-border-color: -fx-color-light-blue-hover;
+}
+
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+  -fx-background-color: mark-color;
+  -fx-border-width: 1.5;
+  -fx-border-color: -fx-color-light-blue-hover;
+}
+
+
+
+/* Navigation layout */
+.navbar {
+  -fx-border-width: 0 0 1 0;
+  -fx-border-color: -fx-color-dark-blue-hover;
+  -fx-background-color: -fx-color-dark-blue;
+  -fx-text-fill: -fx-color-dimmed-white;
+}
+
+.navbar, .navbar .context-menu, .navbar .menu, .navbar .menu-item, .navbar .menu .label, .navbar .menu-item .label {
+  -fx-background-color: -fx-color-pig3;
+}
+
+.navbar .context-menu {
+  -fx-padding: 0;
+}
+
+.navbar .context-menu .menu-item {
+  -fx-padding: 5;
+}
+
+.navbar .menu:focus, .navbar .menu:focused, .navbar .menu:active, .navbar .menu:hover,
+.navbar .menu-item:focus, .navbar .menu-item:focused, .navbar .menu-item:active, .navbar .menu-item:hover,
+.navbar .menu:focus > .label, .navbar .menu:focused > .label, .navbar .menu:active > .label, .navbar .menu:hover > .label,
+.navbar .menu-item:focus > .label, .navbar .menu-item:focused > .label, .navbar .menu-item:active > .label, .navbar .menu-item:hover > .label {
+  -fx-background-color: -fx-color-pig4;
+}
+
+.navbar .context-menu {
+  -fx-border-width: 0 0 1 0;
+  -fx-border-color: -fx-color-dark-blue-hover;
+}
+
+.navbar .label {
+  -fx-text-fill: -fx-color-dimmed-white;
+}
+
+.navbar .split-menu-button, .navbar .split-menu-button .label, .navbar .split-menu-button .arrow-button {
+  -fx-background-color: -fx-color-dark-blue;
+  -fx-padding: 2;
+}
+.navbar .split-menu-button .arrow-button .arrow {
+  -fx-text-fill: -fx-color-dimmed-white;  
+  -fx-background-color: -fx-color-dimmed-white;
+}
+
+.side-nav {
+  -fx-background-color: -fx-color-dark-gray;
+  -fx-text-fill: -fx-color-dimmed-white;
+  -fx-border-color: -fx-color-dark-blue;
+  -fx-border-width:  0 1 0 0;
+}
+
+.side-nav .nav-label {
+  -fx-border-width: 0 0 1 0;
+  -fx-border-color: -fx-color-light-green-hover;
+  -fx-padding: 7 7 7 10;
+}
+.side-nav .nav-label * {
+  -fx-text-fill: -fx-color-dimmed-white;
+}
+
+.side-nav .nav-link {
+  -fx-padding: 7 7 7 10;
+  -fx-border-radius: 0;
+  -fx-background-color: -fx-color-dark-gray;
+  -fx-text-fill: -fx-color-dimmed-white;
+}
+
+.side-nav .nav-link:hover, .side-nav .nav-link:active, .side-nav .nav-link.active, .side-nav .nav-link:focus, .side-nav .nav-link:focused {
+  -fx-background-color: -fx-color-black;
+}
+
+.title-nav {
+  -fx-background-color: -fx-color-dark-gray;
+  -fx-text-fill: -fx-color-dimmed-white;
+  -fx-border-width: 0 0 1 0;
+  -fx-border-color: -fx-color-light-green-hover;
+  -fx-padding: 7 7 7 10;
+}
+.title-nav .label {
+  -fx-text-fill: -fx-color-dimmed-white;
+}
+
+.status-bar {
+  -fx-border-width: 1 0 0 0;
+  -fx-border-color: -fx-color-light-green-hover;
+  -fx-background-color: -fx-color-pig3;
+  -fx-text-fill: -fx-color-dimmed-white;
+}
+
+.status-bar .label {
+  -fx-text-fill: -fx-color-dimmed-white;
+}
+
+
+/* Form wrapper */
+.form-wrapper {
+  -fx-background-color: -fx-color-white;
+  -fx-padding: 20;
+  -fx-border-radius: 5;
+  -fx-border-width: 1;
+  -fx-border-color: -fx-color-light-gray;
+}
+
+.bg-white {
+  -fx-background-color: -fx-color-white;
+}
+
+/* Pagination */
+.pagination-list .button {
+  -fx-min-width: 30;
+  -fx-min-height: 30;
+  -fx-pref-width: 30;
+  -fx-pref-height: 30;
+  -fx-padding: 0;
+  -fx-background-color: -fx-color-light-green-hover;
+  -fx-text-fill: -fx-color-black;
+}
+
+.pagination-list .button:hover, .pagination-list .button:active, .pagination-list .active-page, .pagination-list .button:focus, .pagination-list .button:focused {
+  -fx-text-fill: -fx-color-dimmed-white;
+  -fx-background-color: -fx-color-dark-blue;
+}
+
+
+/* User list layout */
+.user-list, .user-list .scroll-pane, .user-list .flow-pane {
+  -fx-background-color: -fx-color-dimmed-white;
+}
+
+.user-card {
+  -fx-background-color: -fx-color-white;
+  -fx-border-color: -fx-color-light-gray;
+  -fx-border-width: 1;
+  -fx-border-radius: 10;
+  -fx-text-fill: -fx-color-dark-blue;
+}
+.user-card .label {
+  -fx-text-fill: -fx-color-dark-blue;
+}
+
+.user-card .button {
+  -fx-padding: 2;
+  -fx-min-width: 20;
+}
+
+
+/* Product list */
+.table-view {
+  -fx-border-color: -fx-color-dark-blue;
+}
+
+.table-view .column-header {
+  -fx-background-color: -fx-color-dark-blue;
+  -fx-text-fill: white;
+}
+.table-view .column-header .label {
+  -fx-text-fill: white;
+  -fx-alignment: center-left;
+  -fx-opacity: 1.0;
+}
+
+.table-view .table-row-cell {
+  -fx-border-width: 1 0 0 0;
+  -fx-border-color: -fx-color-light-green-hover;
+  -fx-table-cell-border-color: -fx-color-light-blue-hover;
+}
+
+
+/* About card */
+.about-card-img {
+  -fx-background-color:  -fx-color-pig4;
+  -fx-padding: 5;
+}
