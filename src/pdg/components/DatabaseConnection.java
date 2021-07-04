@@ -4,21 +4,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection{
-    public Connection databaselink;
+    public Connection databaseLink;
+
     public Connection getConnection(){
         //Per log in
-        String databaseName="";
-        String databaseUser="";
-        String databasePassword="";
-        String url="jdbc:mysql://localhost/" +  databaseName;
+        String databaseName="pdg";
+        String databaseUser="root";
+        String databasePassword="passwordijuvqitu";
+        String url="jdbc:mysql://localhost/" + databaseName;
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            databaselink= DriverManager.getConnection(url,databaseUser,databasePassword);
+            databaseLink= DriverManager.getConnection(url,databaseUser,databasePassword);
 
         }catch(Exception ex){
             ErrorPopupComponent.show(ex.toString());
         }
-        return databaselink;
+        return databaseLink;
     }
 }
