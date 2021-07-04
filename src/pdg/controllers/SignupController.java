@@ -2,17 +2,26 @@ package pdg.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import static javax.swing.JOptionPane.showMessageDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class SignupController implements Initializable {
     public final String SIGN_UP_VIEW = "signup";
@@ -25,14 +34,60 @@ public class SignupController implements Initializable {
 
     @FXML
     private ChoiceBox choiceBox;
-
+    @FXML private TextField idField;
+    @FXML private TextField nameField;
+    @FXML private TextField emailField;
+    @FXML private PasswordField passwordField;
+    @FXML private PasswordField confirmPasswordField;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.addAll("Albania \uD83C\uDDE6\uD83C\uDDF1", "Kosovo \uD83C\uDDFD\uD83C\uDDF0");
         choiceBox.setItems(list);
     }
-
+    
+    @FXML
+    private void onRegisterButtonClick(ActionEvent event) {
+        try {
+        	
+        	if(passwordField.getText().equals(confirmPasswordField.getText()))
+        	{
+        		emailValidation();
+        		FullNameValidation();
+        		
+        	}else {
+        		showMessageDialog(null, "Keni futur te dhenat gabimisht");
+        	}
+//           
+        } catch (Exception e) {
+        }
+        }
+    
+    
+    public void emailValidation() {
+    	String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+    	 
+    	Pattern pattern = Pattern.compile(regex);
+    	Matcher matcher = pattern.matcher(emailField.getText());
+    	if (matcher.matches()) {
+    		
+    	}
+    	else {
+    		showMessageDialog(null,"Email nuk eshte ne formatin e duhur");
+    		emailField.requestFocus();
+    	}
+    }
+    
+    public void FullNameValidation() {
+    	String regex="^[a-zA-Z\\s]+"; 
+    	if(nameField.getText().matches(regex)) {
+    		
+    	}else {
+    		showMessageDialog(null,"Full Name duhet te permbaje vetem shkronja");
+    		nameField.requestFocus();
+    	}
+    }
     public void setView2(String view) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(viewPath2(view)));
@@ -58,3 +113,4 @@ public class SignupController implements Initializable {
         return VIEW_PATH + "/" + view + ".fxml";
     }
 }
+
