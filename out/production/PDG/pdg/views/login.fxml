@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="680.0" minWidth="992.0" spacing="15.0" styleClass="form-wrapper" stylesheets="@../resources/styles/app.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pdg.controllers.LoginController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="680.0" minWidth="992.0" spacing="15.0" styleClass="form-wrapper" stylesheets="@../resources/styles/app.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" VBox.vgrow="ALWAYS" fx:controller="pdg.controllers.LoginController">
     <children>
         <GridPane alignment="CENTER" hgap="15.0" styleClass="form-wrapper" vgap="15.0">
             <columnConstraints>

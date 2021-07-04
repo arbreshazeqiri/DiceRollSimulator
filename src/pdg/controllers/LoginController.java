@@ -1,6 +1,5 @@
 package pdg.controllers;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -8,16 +7,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
     @FXML
@@ -25,11 +23,11 @@ public class LoginController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../views/main-screen.fxml"));
-            Pane root = loader.load();
+            Parent root = loader.load();
             MainController controller = loader.getController();
-            controller.setView(controller.LEADERBOARD_VIEW);
-
+            controller.loadView(MainController.LEADERBOARD_VIEW);
             Scene scene = new Scene(root);
+
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setScene(scene);
             primaryStage.show();

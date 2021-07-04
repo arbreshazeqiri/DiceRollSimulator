@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static javax.swing.JOptionPane.showMessageDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
@@ -63,7 +63,19 @@ public class SignupController implements Initializable {
         } catch (Exception e) {
         }
         }
-    
+
+    @FXML
+    private void onCancelButtonClick(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(viewPath2("login")));
+            Scene scene = new Scene(root);
+
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+        }
+    }
     
     public void emailValidation() {
     	String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
@@ -95,6 +107,7 @@ public class SignupController implements Initializable {
         switch (view) {
             case LOG_IN_VIEW2:
                 pane = loader.load();
+                contentPane2.setAlignment(Pos.CENTER);
                 break;
             case SIGN_UP_VIEW:
                 pane = loader.load();

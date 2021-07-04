@@ -43,7 +43,7 @@
                         <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                         <Label text="Country" GridPane.rowIndex="5" />
                         <ChoiceBox fx:id="choiceBox" prefWidth="220.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="btn-dark" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Button fx:id="cancelButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCancelButtonClick" styleClass="btn-dark" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Button fx:id="RegisterId" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRegisterButtonClick" text="Register" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                     </children>
                 </GridPane>

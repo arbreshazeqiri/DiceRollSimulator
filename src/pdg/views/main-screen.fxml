@@ -44,12 +44,12 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Log Out">
+                                <MenuItem fx:id="onLogoutMenuClick" mnemonicParsing="false" text="Log Out">
                                     <accelerator>
                                         <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
                                     </accelerator>
                                 </MenuItem>
-                                <MenuItem mnemonicParsing="false" text="Close">
+                                <MenuItem fx:id="onExitMenuClick" mnemonicParsing="false" text="Close">
                                     <accelerator>
                                         <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
                                     </accelerator>
@@ -58,7 +58,7 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="New Game">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Play a New Game">
+                                <MenuItem mnemonicParsing="false" onAction="#onNewGameMenuClick" text="Play a New Game">
                                     <accelerator>
                                         <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                                     </accelerator>
@@ -67,7 +67,10 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="About" />
+                                <MenuItem mnemonicParsing="false" onAction="#onAboutClick" text="About">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator></MenuItem>
                             </items>
                         </Menu>
                     </menus>
@@ -83,9 +86,9 @@
                         <Label styleClass="nav-label" text="Navigation" textFill="#fffefe" />
                     </children>
                 </HBox>
-                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" styleClass="nav-link" text="Profile" />
-                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" styleClass="nav-link" text="Leaderboard" />
-                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" styleClass="nav-link" text="Logout" />
+                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onLeaderboardNavClick" styleClass="nav-link" text="Leaderboard" />
+                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onProfileNavClick" styleClass="nav-link" text="Profile" />
+                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onLogoutNavClick" styleClass="nav-link" text="Logout" />
             </children>
         </VBox>
     </left>
