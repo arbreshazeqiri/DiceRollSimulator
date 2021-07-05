@@ -2,6 +2,8 @@ package pdg.models;
 
 import pdg.utils.SessionManager;
 
+import java.util.Random;
+
 public class Game {
     private static final int pointsToWin = 100;
     private Die die;
@@ -49,6 +51,15 @@ public class Game {
         current.saveScore();
         switchTurn();
         die.setTop(0);
+    }
+    public void playComputer(){
+        Random random = new Random();
+        int pcMove = random.nextInt(4); //for value 1 hold
+        if(pcMove == 1){
+            current.saveScore();
+            switchTurn();
+        }
+        roll();
     }
 
 }

@@ -1,8 +1,5 @@
 package pdg.controllers;
 
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +12,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import pdg.components.DatabaseConnection;
 import pdg.components.ErrorPopupComponent;
-import pdg.utils.BCrypt;
+import pdg.models.User;
+import pdg.repositories.UserRepository;
+import pdg.utils.SecurityHelper;
+import pdg.utils.SessionManager;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
@@ -51,16 +53,19 @@ public class LoginController implements Initializable {
         public void validateLogin(ActionEvent eventi){
                 try
                 {
-                    String query = "SELECT * FROM user_account WHERE username = ?";
+//                    String query = "SELECT * FROM user_account WHERE username = ?";
+//
+//                    PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(query);
+//                    preparedStatement.setString(1,  username.getText());
+//                    ResultSet resultSet = preparedStatement.executeQuery();
+                    User user = UserRepository.find(username.getText());
 
-                    PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(query);
-                    preparedStatement.setString(1,  username.getText());
-
-                    ResultSet resultSet = preparedStatement.executeQuery();
-                    if(resultSet.next())
+                    if(user != null)
                     {
-                        if (BCrypt.checkpw(password.getText(), resultSet.getString("password"))) {
+                        String hashedPassword = SecurityHelper.computeHash(password.getText(), user.getSalt());
+                        if (user.getPassword().equals(hashedPassword)) {
                             FXMLLoader loader = new FXMLLoader();
+                            SessionManager.user = user;
                             loader.setLocation(getClass().getResource("../views/main-screen.fxml"));
                             Parent root = loader.load();
                             MainController controller = loader.getController();

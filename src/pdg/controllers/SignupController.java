@@ -1,13 +1,5 @@
 package pdg.controllers;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-import javafx.scene.control.*;
-import pdg.components.DatabaseConnection;
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,12 +10,29 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import pdg.components.ErrorPopupComponent;
-import pdg.utils.BCrypt;
+import pdg.components.DatabaseConnection;
+import pdg.models.User;
+import pdg.repositories.UserRepository;
+import pdg.utils.SecurityHelper;
+import pdg.utils.SessionManager;
+
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class SignupController implements Initializable {
     public final String SIGN_UP_VIEW = "signup";
@@ -94,7 +103,7 @@ public class SignupController implements Initializable {
         }
     }
 
-    public void emailValidation(ActionEvent eventi) {
+    public void emailValidation(ActionEvent eventi) throws Exception {
         String regex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$";
 
         Pattern pattern = Pattern.compile(regex);
@@ -116,19 +125,18 @@ public class SignupController implements Initializable {
         }
     }
 
-    public boolean addUser(ActionEvent eventi, String username, String fullname, String email, String password, String country) {
+    public boolean addUser(ActionEvent eventi, String username, String fullname, String email, String password, String country) throws Exception {
 
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB2 = connectNow.getConnection();
+//        DatabaseConnection connectNow = new DatabaseConnection();
+//        Connection connectDB2 = connectNow.getConnection();
+        String salt = SecurityHelper.generateSalt();
+        String hashedpassword = SecurityHelper.computeHash(password,salt);
+        User user = new User(username,fullname,email,hashedpassword,salt,country);
 
-        String hashedpassword = BCrypt.hashpw(password, BCrypt.gensalt());
-        String insertFields = "INSERT INTO user_account(username, fullname, email, password, country) VALUES ('";
-        String insertValues = username + "','" + fullname + "','" + email + "','" + hashedpassword + "','" + country + "');";
-        String insertToRegister = insertFields + insertValues;
 
         try {
-            Statement statement = connectDB2.createStatement();
-            statement.executeUpdate(insertToRegister);
+            UserRepository.create(user);
+            SessionManager.user = user;
             showMessageDialog(null, "Registration: successful. Login with your new account!");
             Parent root = FXMLLoader.load(getClass().getResource(viewPath2("login")));
             Scene scene = new Scene(root);

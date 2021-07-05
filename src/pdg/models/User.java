@@ -1,23 +1,17 @@
 package pdg.models;
 
-import java.util.Date;
-
 public class User {
-    private int userId;
     private String username;
     private String fullName;
     private String email;
     private String password;
     private String salt;
     private String country;
-    private Date createdAt;
-    private Date updatedAt;
     private int turnScore;
     private int totalScore;
     private int numberOfWins;
 
-    public User(int userId,String username,String fullName, String email, String password, String salt, String country){
-        this.userId = userId;
+    public User(String username,String fullName, String email, String password, String salt, String country){
         this.username = username;
         this.fullName = fullName;
         this.email = email;
@@ -34,17 +28,12 @@ public class User {
         this.totalScore = 0;
     }
 
-    public int getUserId() {
-        return userId;
-    }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+
 
     public String getFullName() {
         return fullName;

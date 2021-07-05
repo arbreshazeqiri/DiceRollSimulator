@@ -1,12 +1,11 @@
 package pdg.repositories;
 import pdg.models.User;
 import pdg.utils.DbHelper;
-import pdg.utils.DateHelper;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class UserRepository {
@@ -21,7 +20,7 @@ public class UserRepository {
         ArrayList<User> list = new ArrayList<>();
 
         Connection conn = DbHelper.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users ORDER BY id ASC LIMIT ? OFFSET ?");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users LIMIT ? OFFSET ?");
         stmt.setInt(1, pageSize);
         stmt.setInt(2, pageSize * page);
         ResultSet res = stmt.executeQuery();
@@ -30,18 +29,16 @@ public class UserRepository {
         }
         return list;
     }
-
-    public static User find(int id) throws Exception {
+    public static User find(String username) throws Exception {
         Connection conn = DbHelper.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ? LIMIT 1");
-        stmt.setInt(1, id);
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ? LIMIT 1");
+        stmt.setString(1, username);
 
         ResultSet res = stmt.executeQuery();
         if (!res.next()) return null;
         return parseRes(res);
     }
-
-    public static User find(String email) throws Exception {
+    public static User findByEmail(String email) throws Exception {
         Connection conn = DbHelper.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE email = ? LIMIT 1");
         stmt.setString(1, email);
@@ -53,7 +50,7 @@ public class UserRepository {
 
     public static User create(User model) throws Exception {
         Connection conn = DbHelper.getConnection();
-        String query = "INSERT INTO users (username, fullName, email, password, salt, country) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO users (username, fullName, email, password, salt, country, numberOfWins) VALUES (?, ?, ?, ?, ?, ?,?)";
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, model.getUsername());
         stmt.setString(2, model.getFullName());
@@ -61,39 +58,38 @@ public class UserRepository {
         stmt.setString(4, model.getPassword());
         stmt.setString(5, model.getSalt());
         stmt.setString(6, model.getCountry());
-
+        stmt.setInt(7,model.getNumberOfWins());
 
         if (stmt.executeUpdate() != 1)
             throw new Exception("ERR_NO_ROW_CHANGE");
 
-        ResultSet res = conn.createStatement().executeQuery("SELECT * FROM users ORDER BY createdAt DESC LIMIT 1");
+        ResultSet res = conn.createStatement().executeQuery("SELECT * FROM users  LIMIT 1");
         res.next();
         return parseRes(res);
     }
 
     public static User update(User model) throws Exception {
         Connection conn = DbHelper.getConnection();
-        String query = "UPDATE users SET username = ?,fullName = ? , email = ?, password = ?, salt = ?, country = ?, numberOfWins = ?, updatedAt = CURRENT_TIMESTAMP WHERE id = ?";
+        String query = "UPDATE users SET fullName = ? , email = ?, password = ?, salt = ?, country = ?, numberOfWins = ?, updatedAt = CURRENT_TIMESTAMP WHERE id = ?";
         PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setString(1, model.getUsername());
         stmt.setString(1, model.getFullName());
-        stmt.setString(3, model.getEmail());
-        stmt.setString(4, model.getPassword());
-        stmt.setString(5, model.getSalt());
-        stmt.setString(6, model.getCountry());
-        stmt.setInt(7, model.getNumberOfWins());
-        stmt.setInt(8, model.getUserId());
+        stmt.setString(2, model.getEmail());
+        stmt.setString(3, model.getPassword());
+        stmt.setString(4, model.getSalt());
+        stmt.setString(5, model.getCountry());
+        stmt.setInt(6, model.getNumberOfWins());
+        stmt.setString(7, model.getUsername());
 
         if (stmt.executeUpdate() != 1)
             throw new Exception("ERR_NO_ROW_CHANGE");
 
-        return find(model.getUserId());
+        return find(model.getUsername());
     }
 
-    public static boolean remove(int id) throws Exception {
-        String query = "DELETE FROM users WHERE id = ?";
+    public static boolean remove(String username) throws Exception {
+        String query = "DELETE FROM users WHERE username = ?";
         PreparedStatement stmt = DbHelper.getConnection().prepareStatement(query);
-        stmt.setInt(1, id);
+        stmt.setString(1, username);
         return stmt.executeUpdate() == 1;
     }
 
@@ -105,11 +101,9 @@ public class UserRepository {
         String password = res.getString("password");
         String salt = res.getString("salt");
         String country = res.getString("country");
-        Date createdAt = DateHelper.fromSql(res.getString("createdAt"));
-        Date updatedAt = DateHelper.fromSql(res.getString("updatedAt"));
 
         return new User(
-                id, username, fullName, email, password, salt, country
+                username, fullName, email, password, salt, country
         );
     }
 }
