@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pdg.components.DatabaseConnection;
+import pdg.components.ErrorPopupComponent;
 import pdg.utils.BCrypt;
 
 public class LoginController implements Initializable {
@@ -43,6 +44,7 @@ public class LoginController implements Initializable {
                 loginMessageLabel.setText("Username or Password is empty!");
             }
         } catch (Exception e) {
+            ErrorPopupComponent.show(e.toString());
         }
     }
 
@@ -80,7 +82,7 @@ public class LoginController implements Initializable {
                 }
                 catch (Exception ex)
                 {
-                    ex.printStackTrace();
+                    ErrorPopupComponent.show(ex.toString());
                 }
             }
 
@@ -98,6 +100,7 @@ public class LoginController implements Initializable {
                 primaryStage.setScene(scene);
                 primaryStage.show();
             } catch (Exception e) {
+                e.printStackTrace();
             }
     }
 }

@@ -22,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import pdg.components.ErrorPopupComponent;
 import pdg.utils.BCrypt;
 
 public class SignupController implements Initializable {
@@ -89,6 +90,7 @@ public class SignupController implements Initializable {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
