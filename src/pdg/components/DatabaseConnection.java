@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection{
-    public Connection databaseLink;
+    public static Connection databaseLink;
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         //Per log in
         String databaseName="pdg";
         String databaseUser="root";
-        String databasePassword="passwordijuvqitu";
+        String databasePassword="9621";
         String url="jdbc:mysql://localhost/" + databaseName;
 
         try{
