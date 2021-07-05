@@ -1,10 +1,7 @@
 package pdg.controllers;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,39 +47,42 @@ public class LoginController implements Initializable {
     }
 
         public void validateLogin(ActionEvent eventi){
-//            DatabaseConnection connectNow = new DatabaseConnection();
-//            Connection connectDB = connectNow.getConnection();
+                try
+                {
+                    String query = "SELECT * FROM user_account WHERE username = ?";
 
-            String verifyLogin = "SELECT count(1) FROM user_account WHERE username = ?;";
-            try{
-                PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(verifyLogin);
-                preparedStatement.setString(1,  username.getText());
+                    PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(query);
+                    preparedStatement.setString(1,  username.getText());
 
-                ResultSet resultSet = preparedStatement.executeQuery();
+                    ResultSet resultSet = preparedStatement.executeQuery();
+                    if(resultSet.next())
+                    {
+                        if (BCrypt.checkpw(password.getText(), resultSet.getString("password"))) {
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("../views/main-screen.fxml"));
+                            Parent root = loader.load();
+                            MainController controller = loader.getController();
+                            controller.loadView(MainController.LEADERBOARD_VIEW);
+                            Scene scene = new Scene(root);
 
-                while(resultSet.next()){
-                    if(BCrypt.checkpw(password.getText(), resultSet.getString("password"))) {
-                        FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("../views/main-screen.fxml"));
-                        Parent root = loader.load();
-                        MainController controller = loader.getController();
-                        controller.loadView(MainController.LEADERBOARD_VIEW);
-                        Scene scene = new Scene(root);
-
-                        Stage primaryStage = (Stage) ((Node) eventi.getSource()).getScene().getWindow();
-                        primaryStage.setScene(scene);
-                        primaryStage.show();
+                            Stage primaryStage = (Stage) ((Node) eventi.getSource()).getScene().getWindow();
+                            primaryStage.setScene(scene);
+                            primaryStage.show();
+                        }
+                        else {
+                            loginMessageLabel.setText("Wrong credentials!");
+                        }
                     }
-                    else {
-                        loginMessageLabel.setText("Wrong credentials.");
+                    else
+                    {
+                        loginMessageLabel.setText("Wrong credentials!");
                     }
+                }
+                catch (Exception ex)
+                {
+                    ex.printStackTrace();
+                }
             }
-
-            }catch(Exception e){
-             e.printStackTrace();
-            }
-
-        }
 
         @FXML
         private void onSignupButtonClick(ActionEvent event) {
