@@ -47,16 +47,16 @@
             <Label alignment="CENTER" prefHeight="43.0" prefWidth="260.0" text="Country" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="43.0" prefWidth="265.0" text="Score" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="43.0" prefWidth="263.0" text="Wins" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="167.0" text="1" textFill="WHITE" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="169.0" text="10" textFill="WHITE" GridPane.rowIndex="11" />
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="169.0" text="9" textFill="WHITE" GridPane.rowIndex="10" />
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="168.0" text="8" textFill="WHITE" GridPane.rowIndex="9" />
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="170.0" text="7" textFill="WHITE" GridPane.rowIndex="8" />
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="167.0" text="6" textFill="WHITE" GridPane.rowIndex="7" />
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="162.0" text="5" textFill="WHITE" GridPane.rowIndex="6" />
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="166.0" text="4" textFill="WHITE" GridPane.rowIndex="5" />
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="164.0" text="3" textFill="WHITE" GridPane.rowIndex="4" />
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="166.0" text="2" textFill="WHITE" GridPane.rowIndex="3" />
+            <Label prefHeight="43.0" prefWidth="167.0" text="1" textFill="WHITE" GridPane.rowIndex="2" />
+            <Label prefHeight="42.0" prefWidth="169.0" text="10" textFill="WHITE" GridPane.rowIndex="11" />
+            <Label prefHeight="42.0" prefWidth="169.0" text="9" textFill="WHITE" GridPane.rowIndex="10" />
+            <Label prefHeight="42.0" prefWidth="168.0" text="8" textFill="WHITE" GridPane.rowIndex="9" />
+            <Label prefHeight="42.0" prefWidth="170.0" text="7" textFill="WHITE" GridPane.rowIndex="8" />
+            <Label prefHeight="42.0" prefWidth="167.0" text="6" textFill="WHITE" GridPane.rowIndex="7" />
+            <Label prefHeight="42.0" prefWidth="162.0" text="5" textFill="WHITE" GridPane.rowIndex="6" />
+            <Label prefHeight="43.0" prefWidth="166.0" text="4" textFill="WHITE" GridPane.rowIndex="5" />
+            <Label prefHeight="43.0" prefWidth="164.0" text="3" textFill="WHITE" GridPane.rowIndex="4" />
+            <Label prefHeight="43.0" prefWidth="166.0" text="2" textFill="WHITE" GridPane.rowIndex="3" />
             <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />

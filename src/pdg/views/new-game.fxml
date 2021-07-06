@@ -121,7 +121,7 @@
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <Label fx:id="playerTwoLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="221.0" text="PLAYER 2" textFill="#0a0a0a" GridPane.columnSpan="2">
+                  <Label fx:id="playerTwoLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="221.0" text="COMPUTER" textFill="#0a0a0a" GridPane.columnSpan="2">
                      <font>
                         <Font name="SansSerif Regular" size="30.0" />
                      </font>
@@ -164,7 +164,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: white; -fx-opacity: 0.85; -fx-border-color: transparent; -fx-background-radius: 20; -fx-text-fill: black;" styleClass="buttoni" stylesheets="@../resources/styles/app.css" text="📥 HOLD" translateX="10.0" translateY="155.0">
+            <Button mnemonicParsing="false"  prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: white; -fx-opacity: 0.85; -fx-border-color: transparent; -fx-background-radius: 20; -fx-text-fill: black;" styleClass="buttoni" stylesheets="@../resources/styles/app.css" text="📥 HOLD" translateX="10.0" translateY="155.0">
                <font>
                   <Font size="20.0" />
                </font>

@@ -10,7 +10,7 @@ public class Game {
     private User player;
     private User computer;
     private User current;
-    public Game(String username){
+    public Game(){
         die = new Die();
         player = SessionManager.user;
         computer = new User("Computer");
