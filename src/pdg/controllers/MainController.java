@@ -66,7 +66,7 @@ public class MainController implements Initializable {
 
         switch (screen) {
             case LEADERBOARD_VIEW:
-                contentPane.setAlignment(Pos.TOP_CENTER);
+                contentPane.setAlignment(Pos.CENTER);
                 break;
             case PROFILE_VIEW:
                 contentPane.setAlignment(Pos.TOP_LEFT);
