@@ -349,3 +349,13 @@
   -fx-background-color:  -fx-color-pig4;
   -fx-padding: 5;
 }
+
+.buttoni {
+-fx-font-size: 20px;
+-fx-height: 30px;
+}
+.buttoni:hover, .buttoni:focus {
+        -fx-text-decoration: none;
+        -fx-font-size: 20px;
+        -fx-height: 30px;
+}

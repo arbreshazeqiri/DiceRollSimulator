@@ -11,7 +11,7 @@ import java.util.List;
 public class UserRepository {
     public static int count() throws Exception {
         Connection conn = DbHelper.getConnection();
-        ResultSet res = conn.createStatement().executeQuery("SELECT COUNT(*) FROM users");
+        ResultSet res = conn.createStatement().executeQuery("SELECT COUNT(*) FROM user_account");
         res.next();
         return res.getInt(1);
     }
@@ -20,7 +20,7 @@ public class UserRepository {
         ArrayList<User> list = new ArrayList<>();
 
         Connection conn = DbHelper.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users LIMIT ? OFFSET ?");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user_account LIMIT ? OFFSET ?");
         stmt.setInt(1, pageSize);
         stmt.setInt(2, pageSize * page);
         ResultSet res = stmt.executeQuery();
@@ -31,7 +31,7 @@ public class UserRepository {
     }
     public static User find(String username) throws Exception {
         Connection conn = DbHelper.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ? LIMIT 1");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user_account WHERE username = ? LIMIT 1");
         stmt.setString(1, username);
 
         ResultSet res = stmt.executeQuery();
@@ -40,7 +40,7 @@ public class UserRepository {
     }
     public static User findByEmail(String email) throws Exception {
         Connection conn = DbHelper.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE email = ? LIMIT 1");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user_account WHERE email = ? LIMIT 1");
         stmt.setString(1, email);
 
         ResultSet res = stmt.executeQuery();
@@ -50,7 +50,7 @@ public class UserRepository {
 
     public static User create(User model) throws Exception {
         Connection conn = DbHelper.getConnection();
-        String query = "INSERT INTO users (username, fullName, email, password, salt, country, numberOfWins) VALUES (?, ?, ?, ?, ?, ?,?)";
+        String query = "INSERT INTO user_account (username, fullname, email, password, salt, country, numberOfWins) VALUES (?, ?, ?, ?, ?, ?,?)";
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, model.getUsername());
         stmt.setString(2, model.getFullName());
@@ -63,14 +63,14 @@ public class UserRepository {
         if (stmt.executeUpdate() != 1)
             throw new Exception("ERR_NO_ROW_CHANGE");
 
-        ResultSet res = conn.createStatement().executeQuery("SELECT * FROM users  LIMIT 1");
+        ResultSet res = conn.createStatement().executeQuery("SELECT * FROM user_account  LIMIT 1");
         res.next();
         return parseRes(res);
     }
 
     public static User update(User model) throws Exception {
         Connection conn = DbHelper.getConnection();
-        String query = "UPDATE users SET fullName = ? , email = ?, password = ?, salt = ?, country = ?, numberOfWins = ?, updatedAt = CURRENT_TIMESTAMP WHERE id = ?";
+        String query = "UPDATE user_account SET fullname = ? , email = ?, password = ?, salt = ?, country = ?, numberOfWins = ?, updatedAt = CURRENT_TIMESTAMP WHERE id = ?";
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, model.getFullName());
         stmt.setString(2, model.getEmail());
@@ -87,7 +87,7 @@ public class UserRepository {
     }
 
     public static boolean remove(String username) throws Exception {
-        String query = "DELETE FROM users WHERE username = ?";
+        String query = "DELETE FROM user_account WHERE username = ?";
         PreparedStatement stmt = DbHelper.getConnection().prepareStatement(query);
         stmt.setString(1, username);
         return stmt.executeUpdate() == 1;
@@ -96,14 +96,14 @@ public class UserRepository {
     private static User parseRes(ResultSet res) throws Exception {
         int id = res.getInt("id");
         String username = res.getString("username");
-        String fullName = res.getString("fullName");
+        String fullname = res.getString("fullname");
         String email = res.getString("email");
         String password = res.getString("password");
         String salt = res.getString("salt");
         String country = res.getString("country");
 
         return new User(
-                username, fullName, email, password, salt, country
+                username, fullname, email, password, salt, country
         );
     }
 }

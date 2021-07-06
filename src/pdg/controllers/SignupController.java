@@ -19,6 +19,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pdg.components.DatabaseConnection;
+import pdg.components.ErrorPopupComponent;
 import pdg.models.User;
 import pdg.repositories.UserRepository;
 import pdg.utils.SecurityHelper;
@@ -146,6 +147,7 @@ public class SignupController implements Initializable {
             primaryStage.show();
             return true;
         } catch (Exception e) {
+            ErrorPopupComponent.show(e.toString());
             return false;
         }
     }

@@ -116,11 +116,7 @@
                         <Label text="Section title" />
                     </children>
                 </HBox>
-                <VBox fx:id="contentPane" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                    <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                    </padding>
-                </VBox>
+                <VBox fx:id="contentPane" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
             </children>
         </VBox>
     </center>

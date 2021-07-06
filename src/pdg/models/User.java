@@ -2,7 +2,7 @@ package pdg.models;
 
 public class User {
     private String username;
-    private String fullName;
+    private String fullname;
     private String email;
     private String password;
     private String salt;
@@ -11,9 +11,9 @@ public class User {
     private int totalScore;
     private int numberOfWins;
 
-    public User(String username,String fullName, String email, String password, String salt, String country){
+    public User(String username,String fullname, String email, String password, String salt, String country){
         this.username = username;
-        this.fullName = fullName;
+        this.fullname = fullname;
         this.email = email;
         this.password = password;
         this.salt = salt;
@@ -36,11 +36,11 @@ public class User {
 
 
     public String getFullName() {
-        return fullName;
+        return fullname;
     }
 
     public void setFullName(String fullName) {
-        this.fullName = fullName;
+        this.fullname = fullName;
     }
 
     public String getEmail() {

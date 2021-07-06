@@ -1,20 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pdg.controllers.NewGameController">
+<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pdg.controllers.NewGameController">
    <children>
-      <ImageView fitHeight="274.0" fitWidth="403.0" layoutX="8.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="500.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/images/game-over.png" />
-         </image>
-      </ImageView>
+      <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: linear-gradient(from 50% 50% to 100% 100%, #29695a, #33c2f8);;" stylesheets="@../resources/styles/app.css" VBox.vgrow="ALWAYS">
+         <children>
+            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="540.0" prefWidth="390.0" style="-fx-background-color: white; -fx-opacity: 0.5; -fx-background-radius: 15 0 0 15;" translateX="-195.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="p1TotalTextField" alignment="CENTER" disable="true" editable="false" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #23947a; -fx-opacity: 0.8; -fx-border-color: transparent; -fx-text-fill: white; -fx-background-radius: 10;" text="100" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="2">
+                     <GridPane.margin>
+                        <Insets left="80.0" right="110.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </TextField>
+                  <TextField fx:id="p1TurnTextField" accessibleRole="TEXT_AREA" alignment="CENTER" disable="true" editable="false" prefHeight="145.0" prefWidth="135.0" promptText="60" style="-fx-background-color: TRANSPARENT; -fx-border-color: transparent; -fx-text-fill: #23947a; -fx-opacity: 1;" text="60" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="50.0" right="75.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Label fx:id="playerOneLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="221.0" text="PLAYER 1" textFill="#0a0a0a" GridPane.columnSpan="2">
+                     <font>
+                        <Font name="SansSerif Regular" size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="CURRENT:" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" right="20.0" top="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="90.0" left="30.0" top="90.0" />
+               </padding>
+               <StackPane.margin>
+                  <Insets left="20.0" />
+               </StackPane.margin>
+            </GridPane>
+            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="540.0" prefWidth="390.0" style="-fx-background-radius: 0 15 15 0; -fx-background-color: white; -fx-opacity: 0.7;" translateX="195.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="p2TotalTextField" alignment="CENTER" disable="true" editable="false" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #23947a; -fx-opacity: 0.8; -fx-border-color: transparent; -fx-text-fill: white; -fx-background-radius: 10;" text="100" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="2">
+                     <GridPane.margin>
+                        <Insets left="110.0" right="80.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </TextField>
+                  <TextField fx:id="p2TurnTextField" accessibleRole="TEXT_AREA" alignment="CENTER" disable="true" editable="false" prefHeight="145.0" prefWidth="135.0" promptText="60" style="-fx-background-color: TRANSPARENT; -fx-border-color: transparent; -fx-text-fill: #23947a; -fx-opacity: 1;" text="60" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="75.0" right="50.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Label fx:id="playerTwoLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="221.0" text="PLAYER 2" textFill="#0a0a0a" GridPane.columnSpan="2">
+                     <font>
+                        <Font name="SansSerif Regular" size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="25.0" top="5.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="CURRENT:" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" left="40.0" top="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="90.0" right="30.0" top="90.0" />
+               </padding>
+               <StackPane.margin>
+                  <Insets left="20.0" />
+               </StackPane.margin>
+            </GridPane>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="-100.0">
+               <image>
+                  <Image url="@../resources/images/dice1.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-opacity: 0.85; -fx-border-color: transparent; -fx-background-radius: 20;" styleClass="buttoni" stylesheets="@../resources/styles/app.css" text="🎲 ROLL" translateX="10.0" translateY="100.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: white; -fx-opacity: 0.85; -fx-border-color: transparent; -fx-background-radius: 20; -fx-text-fill: black;" styleClass="buttoni" stylesheets="@../resources/styles/app.css" text="📥 HOLD" translateX="10.0" translateY="155.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-opacity: 0.85; -fx-border-color: transparent; -fx-background-radius: 20;" styleClass="buttoni" stylesheets="@../resources/styles/app.css" text="🔄 PLAY AGAIN" translateX="10.0" translateY="-230.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </StackPane>
    </children>
-</AnchorPane>
+</VBox>

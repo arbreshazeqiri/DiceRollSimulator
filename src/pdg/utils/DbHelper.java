@@ -9,7 +9,7 @@ public class DbHelper {
 
     public static Connection getConnection() throws Exception {
         if (conn == null || conn.isClosed()) {
-            conn = DriverManager.getConnection(AppConfig.get().getConnectionString());
+            conn = DriverManager.getConnection(AppConfig.get().getConnectionString(), "root", "");
         }
 
         return conn;
@@ -27,7 +27,7 @@ public class DbHelper {
 
         ArrayList<String> queries = new ArrayList<>();
         queries.add(
-                String.format("CREATE TABLE IF NOT EXISTS users (id INTEGER NOT NULL PRIMARY KEY %s, username VARCHAR(50) NOT NULL,fullName VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL UNIQUE, password VARCHAR(255) NOT NULL, salt VARCHAR(255) NOT NULL, country VARCHAR(50) NOT NULL, numberOfWins integer NOT NULL DEFAULT 0, createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)", autoIncFunc)
+                String.format("CREATE TABLE IF NOT EXISTS user_account (id INTEGER NOT NULL PRIMARY KEY %s, username VARCHAR(50) NOT NULL,fullName VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL UNIQUE, password VARCHAR(255) NOT NULL, salt VARCHAR(255) NOT NULL, country VARCHAR(50) NOT NULL, numberOfWins integer NOT NULL DEFAULT 0, createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)", autoIncFunc)
         );
 
         Connection conn = getConnection();

@@ -69,7 +69,7 @@ public class LoginController implements Initializable {
                             loader.setLocation(getClass().getResource("../views/main-screen.fxml"));
                             Parent root = loader.load();
                             MainController controller = loader.getController();
-                            controller.loadView(MainController.LEADERBOARD_VIEW);
+                            controller.loadView(MainController.NEW_GAME_VIEW);
                             Scene scene = new Scene(root);
 
                             Stage primaryStage = (Stage) ((Node) eventi.getSource()).getScene().getWindow();
@@ -82,7 +82,7 @@ public class LoginController implements Initializable {
                     }
                     else
                     {
-                        loginMessageLabel.setText("Wrong credentials!");
+                        loginMessageLabel.setText("User doesn't exist. Sign up to continue.");
                     }
                 }
                 catch (Exception ex)

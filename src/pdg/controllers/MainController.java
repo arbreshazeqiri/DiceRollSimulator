@@ -63,6 +63,7 @@ public class MainController implements Initializable {
         contentPane.getChildren().add(node);
         VBox.setVgrow(node, Priority.ALWAYS);
 
+
         switch (screen) {
             case LEADERBOARD_VIEW:
                 contentPane.setAlignment(Pos.TOP_CENTER);
@@ -74,7 +75,7 @@ public class MainController implements Initializable {
                 contentPane.setAlignment(Pos.CENTER);
                 break;
             case NEW_GAME_VIEW:
-                contentPane.setAlignment(Pos.CENTER);
+                contentPane.setAlignment(Pos.TOP_CENTER);
                 break;
             default:
                 throw new Exception("ERR_SCREEN_NOT_FOUND");
