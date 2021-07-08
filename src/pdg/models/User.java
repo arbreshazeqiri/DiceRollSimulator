@@ -9,6 +9,7 @@ public class User {
     private String country;
     private int turnScore;
     private int totalScore;
+    private int score;
     private int numberOfWins;
 
     public User(String username, String fullname, String email, String password, String salt, String country) {
@@ -20,6 +21,7 @@ public class User {
         this.country = country;
         this.turnScore = 0;
         this.totalScore = 0;
+        this.score = 0;
         this.numberOfWins = 0;
     }
 
@@ -105,6 +107,14 @@ public class User {
 
     public void changeTurnScore(int rollValue) {
         this.turnScore += rollValue;
+    }
+
+    public void addTotalScore(int add){
+        this.score += add;
+    }
+
+    public int getScore(){
+        return this.score;
     }
 
     public void saveScore() {

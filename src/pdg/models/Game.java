@@ -1,12 +1,7 @@
 package pdg.models;
-import javafx.scene.image.Image;
-import pdg.utils.SessionManager;
-
-import java.io.File;
-import java.util.Random;
 
 public class Game {
-    private static final int pointsToWin = 100;
+    private static final int pointsToWin = 10;
     private Die die;
     private User player;
     private User computer;
@@ -59,10 +54,9 @@ public class Game {
 
     public void hold() {
         current.saveScore();
-        switchTurn();
     }
 
-//    public void playComputer() {
+    //    public void playComputer() {
 //        Random random = new Random();
 //        int pcMove = random.nextInt(4); //for value 1 hold
 //        if (pcMove == 1) {

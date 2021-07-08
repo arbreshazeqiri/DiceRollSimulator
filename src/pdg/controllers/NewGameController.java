@@ -2,6 +2,8 @@ package pdg.controllers;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,6 +11,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import pdg.models.Game;
+import pdg.repositories.UserRepository;
+import pdg.utils.SessionManager;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,20 +37,32 @@ public class NewGameController extends ChildController{
     @FXML
     GridPane p1box, p2box;
 
-    @Override
-    public void initialize(URL url, ResourceBundle bundle) {
-        clock = new Roller();
-        pig = new Game("John Doe", "Computer");
+    @FXML
+    Label winnerLabel;
 
+    @Override
+    public void initialize(URL url, ResourceBundle bundle){
+        startGame();
+    }
+
+    public void startGame(){
+        clock = new Roller();
+        pig = new Game(SessionManager.user.getUsername(), "Computer");
+        playagainButton.setVisible(false);
+        rollButton.setDisable(false);
+        holdButton.setDisable(false);
         playerOneLabel.setText(pig.getUser().getUsername());
         playerTwoLabel.setText(pig.getComputer().getUsername());
         rollButton.setOnAction(event -> roll());
         holdButton.setOnAction(event -> hold());
-//        playagainButton.setOnAction();
+        playagainButton.setOnAction(event -> startGame());
+        winnerLabel.setText("");
 
         updateView();
         File f = new File("src/pdg/resources/images/logokatror.png");
         dieImage.setImage(new Image(f.toURI().toString()));
+        dieImage.setFitHeight(100);
+        dieImage.setFitWidth(100);
     }
 
     public void updateView(){
@@ -55,8 +72,8 @@ public class NewGameController extends ChildController{
         p1TotalTextField.setText("" + pig.getUser().getTotalScore());
         p2TotalTextField.setText("" + pig.getComputer().getTotalScore());
         if(pig.checkIfUserCurrent()){
-           p1box.setOpacity(0.7);
-           p2box.setOpacity(0.5);
+            p1box.setOpacity(0.7);
+            p2box.setOpacity(0.5);
         }
         else{
             p2box.setOpacity(0.7);
@@ -65,10 +82,23 @@ public class NewGameController extends ChildController{
         if(pig.gameOver()){
             File f = new File("src/pdg/resources/images/game-over.png");
             dieImage.setImage(new Image(f.toURI().toString()));
+            dieImage.setFitHeight(250);
+            dieImage.setFitWidth(250);
             playagainButton.setVisible(true);
             playagainButton.setOpacity(1);
             rollButton.setDisable(true);
             holdButton.setDisable(true);
+            winnerLabel.setText(pig.getCurrent().getUsername() + " is the winner.");
+            if(SessionManager.user == pig.getCurrent()) {
+                SessionManager.user.incrementNumberOfWins();
+            }
+            SessionManager.user.addTotalScore(pig.getCurrent().getTotalScore());
+        }
+        try {
+            UserRepository.update(SessionManager.user);
+        }
+        catch(Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -102,6 +132,9 @@ public class NewGameController extends ChildController{
 
     public void hold(){
         pig.hold();
+        if (!pig.gameOver()) {
+            pig.switchTurn();
+        }
         updateView();
     }
 
@@ -110,7 +143,7 @@ public class NewGameController extends ChildController{
             File f = new File("src/pdg/resources/images/dice1.png");
             dieImage.setImage(new Image(f.toURI().toString()));
         }
-    File f = new File("src/pdg/resources/images/dice"+top+".png");
-    dieImage.setImage(new Image(f.toURI().toString()));
+        File f = new File("src/pdg/resources/images/dice"+top+".png");
+        dieImage.setImage(new Image(f.toURI().toString()));
     }
 }

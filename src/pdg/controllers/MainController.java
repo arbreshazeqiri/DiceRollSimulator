@@ -1,8 +1,5 @@
 package pdg.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +12,9 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pdg.components.AboutComponent;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     public final static String LEADERBOARD_VIEW = "leaderboard";
@@ -93,6 +93,15 @@ public class MainController implements Initializable {
 
     @FXML
     private void onProfileNavClick(ActionEvent event) {
+        try {
+            this.loadView(PROFILE_VIEW);
+        } catch (Exception e) {
+
+        }
+    }
+
+    @FXML
+    public void onPlayAgainClick(ActionEvent event){
         try {
             this.loadView(PROFILE_VIEW);
         } catch (Exception e) {

@@ -50,7 +50,7 @@ public class UserRepository {
 
     public static User create(User model) throws Exception {
         Connection conn = DbHelper.getConnection();
-        String query = "INSERT INTO user_account (username, fullname, email, password, salt, country, numberOfWins) VALUES (?, ?, ?, ?, ?, ?,?)";
+        String query = "INSERT INTO user_account (username, fullname, email, password, salt, country, numberOfWins, totalScore) VALUES (?, ?, ?, ?, ?, ?,?, ?)";
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, model.getUsername());
         stmt.setString(2, model.getFullName());
@@ -59,6 +59,7 @@ public class UserRepository {
         stmt.setString(5, model.getSalt());
         stmt.setString(6, model.getCountry());
         stmt.setInt(7,model.getNumberOfWins());
+        stmt.setInt(8, model.getTotalScore());
 
         if (stmt.executeUpdate() != 1)
             throw new Exception("ERR_NO_ROW_CHANGE");
@@ -68,22 +69,17 @@ public class UserRepository {
         return parseRes(res);
     }
 
-    public static User update(User model) throws Exception {
+    public static void update(User model) throws Exception {
         Connection conn = DbHelper.getConnection();
-        String query = "UPDATE user_account SET fullname = ? , email = ?, password = ?, salt = ?, country = ?, numberOfWins = ?, updatedAt = CURRENT_TIMESTAMP WHERE id = ?";
+        String query = "UPDATE user_account SET numberOfWins = ? AND score = ? WHERE username = ?";
         PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setString(1, model.getFullName());
-        stmt.setString(2, model.getEmail());
-        stmt.setString(3, model.getPassword());
-        stmt.setString(4, model.getSalt());
-        stmt.setString(5, model.getCountry());
-        stmt.setInt(6, model.getNumberOfWins());
-        stmt.setString(7, model.getUsername());
+        stmt.setInt(1, model.getNumberOfWins());
+        stmt.setInt(2, model.getScore());
+        stmt.setString(3, model.getUsername());
 
         if (stmt.executeUpdate() != 1)
             throw new Exception("ERR_NO_ROW_CHANGE");
 
-        return find(model.getUsername());
     }
 
     public static boolean remove(String username) throws Exception {
@@ -94,7 +90,6 @@ public class UserRepository {
     }
 
     private static User parseRes(ResultSet res) throws Exception {
-        int id = res.getInt("id");
         String username = res.getString("username");
         String fullname = res.getString("fullname");
         String email = res.getString("email");
