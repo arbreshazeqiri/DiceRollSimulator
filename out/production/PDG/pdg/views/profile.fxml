@@ -57,11 +57,7 @@
                <padding>
                   <Insets left="20.0" />
                </padding></Label>
-            <ImageView fx:id="countryImage" fitHeight="30.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-               <image>
-                  <Image url="@../resources/images/Kosovo.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="countryImage" fitHeight="30.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
             <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="167.0" style="-fx-font-weight: bolder;" text="johndoe" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

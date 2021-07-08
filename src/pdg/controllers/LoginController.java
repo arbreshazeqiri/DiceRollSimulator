@@ -82,7 +82,7 @@ public class LoginController implements Initializable {
                 }
                 catch (Exception ex)
                 {
-                    ex.printStackTrace();
+                    ErrorPopupComponent.show(ex.toString());
                 }
             }
 

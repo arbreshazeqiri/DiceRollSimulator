@@ -110,9 +110,6 @@ public class NewGameController extends ChildController{
 
     public void roll() {
         pig.roll();
-        System.out.println("Top: " + pig.getDie().getTop());
-        System.out.println("P1: " + pig.getUser().getTotalScore());
-        System.out.println("Computer: " + pig.getComputer().getTotalScore());
         updateView();
 
     }

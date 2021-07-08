@@ -16,7 +16,7 @@ public class ProfileController extends ChildController {
     Label usernameLabel, fullnameLabel, emailLabel, winsLabel, scoreLabel;
 
     @FXML
-    ImageView countryImage;
+    ImageView countryImage, avatarImage;
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
@@ -26,9 +26,8 @@ public class ProfileController extends ChildController {
         winsLabel.setText("" + SessionManager.user.getNumberOfWins());
         scoreLabel.setText("" + SessionManager.user.getScore());
 
-
         File f;
-        if(SessionManager.user.getCountry() == "Kosovo"){
+        if(SessionManager.user.getCountry().equals("Kosovo")){
             f = new File("src/pdg/resources/images/Kosovo.png");
         }
         else{

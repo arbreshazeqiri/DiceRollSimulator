@@ -17,7 +17,7 @@
    <children>
       <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: linear-gradient(from 50% 50% to 100% 100%, #29695a, #33c2f8);;" stylesheets="@../resources/styles/app.css" VBox.vgrow="ALWAYS">
          <children>
-            <GridPane fx:id="p1box" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="540.0" prefWidth="390.0" style="-fx-background-color: white; -fx-opacity: 0.5; -fx-background-radius: 15 0 0 15;" translateX="-195.0">
+            <GridPane fx:id="p1box" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="540.0" prefWidth="390.0" style="-fx-background-color: white; -fx-opacity: 0.7; -fx-background-radius: 15 0 0 15;" translateX="-195.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
