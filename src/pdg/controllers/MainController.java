@@ -8,13 +8,19 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pdg.components.AboutComponent;
+import pdg.utils.SessionManager;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
+
+import static pdg.utils.DateHelper.fromSql;
 
 public class MainController implements Initializable {
     public final static String LEADERBOARD_VIEW = "leaderboard";
@@ -27,9 +33,15 @@ public class MainController implements Initializable {
     @FXML
     private VBox contentPane;
 
+    @FXML
+    private Label loggedInUserLabel;
+
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        Date date = new Date(System.currentTimeMillis());
+        loggedInUserLabel.setText("@" + SessionManager.user.getUsername() + "   " + formatter.format(date));
     }
 
     public void loadView(String screen) throws Exception {

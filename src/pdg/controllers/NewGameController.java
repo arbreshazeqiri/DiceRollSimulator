@@ -2,8 +2,6 @@ package pdg.controllers;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -46,31 +44,28 @@ public class NewGameController extends ChildController{
     }
 
     public void startGame(){
+        p1box.setOpacity(0.7);
         clock = new Roller();
         pig = new Game(SessionManager.user.getUsername(), "Computer");
+
         playagainButton.setVisible(false);
         rollButton.setDisable(false);
         holdButton.setDisable(false);
         playerOneLabel.setText(pig.getUser().getUsername());
         playerTwoLabel.setText(pig.getComputer().getUsername());
-        rollButton.setOnAction(event -> roll());
+        rollButton.setOnAction(event -> rollAnimation());
         holdButton.setOnAction(event -> hold());
         playagainButton.setOnAction(event -> startGame());
         winnerLabel.setText("");
-
         updateView();
         File f = new File("src/pdg/resources/images/logokatror.png");
         dieImage.setImage(new Image(f.toURI().toString()));
         dieImage.setFitHeight(100);
         dieImage.setFitWidth(100);
+        p1box.setOpacity(0.7);
     }
 
     public void updateView(){
-        setDieImage(pig.getDie().getTop());
-        p1TurnTextField.setText("" + pig.getUser().getTurnScore());
-        p2TurnTextField.setText("" + pig.getComputer().getTurnScore());
-        p1TotalTextField.setText("" + pig.getUser().getTotalScore());
-        p2TotalTextField.setText("" + pig.getComputer().getTotalScore());
         if(pig.checkIfUserCurrent()){
             p1box.setOpacity(0.7);
             p2box.setOpacity(0.5);
@@ -79,6 +74,13 @@ public class NewGameController extends ChildController{
             p2box.setOpacity(0.7);
             p1box.setOpacity(0.5);
         }
+
+        setDieImage(pig.getDie().getTop());
+        p1TurnTextField.setText("" + pig.getUser().getTurnScore());
+        p2TurnTextField.setText("" + pig.getComputer().getTurnScore());
+        p1TotalTextField.setText("" + pig.getUser().getTotalScore());
+        p2TotalTextField.setText("" + pig.getComputer().getTotalScore());
+
         if(pig.gameOver()){
             File f = new File("src/pdg/resources/images/game-over.png");
             dieImage.setImage(new Image(f.toURI().toString()));
@@ -89,7 +91,7 @@ public class NewGameController extends ChildController{
             rollButton.setDisable(true);
             holdButton.setDisable(true);
             winnerLabel.setText(pig.getCurrent().getUsername() + " is the winner.");
-            if(SessionManager.user == pig.getCurrent()) {
+            if(SessionManager.user.getUsername() == pig.getCurrent().getUsername()) {
                 SessionManager.user.incrementNumberOfWins();
             }
             SessionManager.user.addTotalScore(pig.getCurrent().getTotalScore());
@@ -117,15 +119,24 @@ public class NewGameController extends ChildController{
 
     private class Roller extends AnimationTimer{
         private long FRAMES_PER_SEC = 50L;
-        private long INTERVAL = 1000000000L;
+        private long INTERVAL = 1000000000L / FRAMES_PER_SEC;
+        private int MAX_ROLLS = 20;
 
         private long last = 0;
+        private int count = 0;
+
         @Override
         public void handle(long now){
             if(now - last > INTERVAL){
-                int r = 2 + (int) (Math.random() + 5);
+                int r = 2 + (int) (Math.random() * 5);
                 setDieImage(r);
                 last = now;
+                count++;
+                if(count > MAX_ROLLS){
+                    clock.stop();
+                    roll();
+                    count = 0;
+                }
             }
         }
     }

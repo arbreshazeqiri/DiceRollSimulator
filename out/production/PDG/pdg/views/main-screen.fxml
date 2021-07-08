@@ -95,7 +95,7 @@
     <bottom>
         <HBox styleClass="status-bar" BorderPane.alignment="CENTER">
             <children>
-                <Label text="Label" />
+                <Label fx:id="loggedInUserLabel" text="Label" />
             </children>
             <BorderPane.margin>
                 <Insets />

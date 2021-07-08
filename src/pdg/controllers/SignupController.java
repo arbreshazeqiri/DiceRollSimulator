@@ -18,7 +18,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import pdg.components.DatabaseConnection;
 import pdg.components.ErrorPopupComponent;
 import pdg.models.User;
 import pdg.repositories.UserRepository;
@@ -90,20 +89,6 @@ public class SignupController implements Initializable {
         }
     }
 
-    @FXML
-    private void onCancelButtonClick(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(viewPath2("login")));
-            Scene scene = new Scene(root);
-
-            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void emailValidation(ActionEvent eventi) throws Exception {
         String regex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$";
 
@@ -111,9 +96,23 @@ public class SignupController implements Initializable {
         Matcher matcher = pattern.matcher(emailField.getText());
         if (matcher.matches()) {
             registerMessageLabel.setText("");
-            if (checkEmail(emailField.getText())) {
-                if (checkUsername(usernameField.getText())) {
-                    addUser(eventi, usernameField.getText(), fullnameField.getText(), emailField.getText().toLowerCase(), passwordField.getText(), choiceBox.getValue().toString());
+            if (!UserRepository.findByEmail(emailField.getText())) {
+                if (!UserRepository.findByUsername(usernameField.getText())) {
+                    String salt = SecurityHelper.generateSalt();
+                    String hashedpassword = SecurityHelper.computeHash(passwordField.getText(),salt);
+                    try {
+                        User user = UserRepository.create(usernameField.getText(), fullnameField.getText(), emailField.getText().toLowerCase(), hashedpassword, salt, choiceBox.getValue().toString());
+                        SessionManager.user = user;
+                        showMessageDialog(null, "Registration: successful. Login with your new account!");
+                        Parent root = FXMLLoader.load(getClass().getResource(viewPath2("login")));
+                        Scene scene = new Scene(root);
+
+                        Stage primaryStage = (Stage) ((Node) eventi.getSource()).getScene().getWindow();
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                    } catch (Exception e) {
+                        ErrorPopupComponent.show(e.toString());
+                    }
                 } else {
                     registerMessageLabel.setText("Username is already taken.");
                 }
@@ -126,75 +125,17 @@ public class SignupController implements Initializable {
         }
     }
 
-    public boolean addUser(ActionEvent eventi, String username, String fullname, String email, String password, String country) throws Exception {
-
-//        DatabaseConnection connectNow = new DatabaseConnection();
-//        Connection connectDB2 = connectNow.getConnection();
-        String salt = SecurityHelper.generateSalt();
-        String hashedpassword = SecurityHelper.computeHash(password,salt);
-        User user = new User(username,fullname,email,hashedpassword,salt,country);
-
-
+    @FXML
+    private void onCancelButtonClick(ActionEvent event) {
         try {
-            UserRepository.create(user);
-            SessionManager.user = user;
-            showMessageDialog(null, "Registration: successful. Login with your new account!");
             Parent root = FXMLLoader.load(getClass().getResource(viewPath2("login")));
             Scene scene = new Scene(root);
 
-            Stage primaryStage = (Stage) ((Node) eventi.getSource()).getScene().getWindow();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setScene(scene);
             primaryStage.show();
-            return true;
         } catch (Exception e) {
-            ErrorPopupComponent.show(e.toString());
-            return false;
-        }
-    }
-
-    public boolean checkEmail(String email) {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
-        String verifyLogin = "SELECT count(1) FROM user_account WHERE email = '" + email + "';";
-
-        try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
-
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-            return false;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public boolean checkUsername(String username) {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
-        String verifyLogin = "SELECT count(1) FROM user_account WHERE username = '" + username + "';";
-
-        try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
-
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-            return false;
-        } catch (Exception e) {
-            return false;
+            e.printStackTrace();
         }
     }
 

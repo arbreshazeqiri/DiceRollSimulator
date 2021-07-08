@@ -53,11 +53,6 @@ public class LoginController implements Initializable {
         public void validateLogin(ActionEvent eventi){
                 try
                 {
-//                    String query = "SELECT * FROM user_account WHERE username = ?";
-//
-//                    PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(query);
-//                    preparedStatement.setString(1,  username.getText());
-//                    ResultSet resultSet = preparedStatement.executeQuery();
                     User user = UserRepository.find(username.getText());
 
                     if(user != null)
