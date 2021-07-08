@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="adaptive">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/adaptive" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/alwaysencrypted" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/azureactivedirectoryauthentication" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/connections" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/constrained" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/dataclassification" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/datatypes" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/resultsets" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java/sqljdbc_9.2/enu/samples/sparse" />
+    </SOURCES>
+  </library>
+</component>

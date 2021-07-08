@@ -1,7 +1,7 @@
 package pdg.models;
 
 public class Game {
-    private static final int pointsToWin = 10;
+    private static final int pointsToWin = 50;
     private Die die;
     private User player;
     private User computer;

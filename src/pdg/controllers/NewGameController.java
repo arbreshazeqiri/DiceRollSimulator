@@ -14,6 +14,7 @@ import pdg.utils.SessionManager;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class NewGameController extends ChildController{
@@ -47,7 +48,6 @@ public class NewGameController extends ChildController{
         p1box.setOpacity(0.7);
         clock = new Roller();
         pig = new Game(SessionManager.user.getUsername(), "Computer");
-
         playagainButton.setVisible(false);
         rollButton.setDisable(false);
         holdButton.setDisable(false);
@@ -111,9 +111,24 @@ public class NewGameController extends ChildController{
     public void roll() {
         pig.roll();
         updateView();
+        checkTurn();
 
     }
+    public void playComputer() {
+        Random random = new Random();
+        int pcMove = random.nextInt(4); //for value 1 hold
+        if (pcMove == 1) {
+            holdButton.fire();
+        }
+        rollButton.fire();
+    }
+    public void checkTurn(){
+        if(pig.getCurrent().equals(pig.getComputer())){
+            playComputer();
+        }
 
+
+    }
     private class Roller extends AnimationTimer{
         private long FRAMES_PER_SEC = 50L;
         private long INTERVAL = 1000000000L / FRAMES_PER_SEC;
@@ -140,10 +155,13 @@ public class NewGameController extends ChildController{
 
     public void hold(){
         pig.hold();
+
         if (!pig.gameOver()) {
             pig.switchTurn();
         }
+
         updateView();
+        checkTurn();
     }
 
     public void setDieImage(int top){
