@@ -5,8 +5,8 @@ import java.util.Random;
 public class Die {
     private final static int sides = 6;
     private int top;
-    public Die(){
 
+    public Die() {
         this.top = 0;
     }
 
@@ -15,10 +15,11 @@ public class Die {
     }
 
     public void setTop(int top) {
-        if(top >= 0 && top <= sides)
+        if (top >= 0 && top <= sides)
             this.top = top;
     }
-    public void roll(){
+
+    public void roll() {
         Random random = new Random();
         int roll = random.nextInt(sides) + 1;
         this.top = roll;

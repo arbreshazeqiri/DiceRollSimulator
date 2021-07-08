@@ -46,7 +46,7 @@ public class LoginController implements Initializable {
                 loginMessageLabel.setText("Username or Password is empty!");
             }
         } catch (Exception e) {
-            ErrorPopupComponent.show(e.toString());
+            e.printStackTrace();
         }
     }
 
@@ -87,7 +87,7 @@ public class LoginController implements Initializable {
                 }
                 catch (Exception ex)
                 {
-                    ErrorPopupComponent.show(ex.toString());
+                    ex.printStackTrace();
                 }
             }
 

@@ -11,7 +11,7 @@ public class User {
     private int totalScore;
     private int numberOfWins;
 
-    public User(String username,String fullname, String email, String password, String salt, String country){
+    public User(String username, String fullname, String email, String password, String salt, String country) {
         this.username = username;
         this.fullname = fullname;
         this.email = email;
@@ -22,9 +22,10 @@ public class User {
         this.totalScore = 0;
         this.numberOfWins = 0;
     }
-    public User(String username){
+
+    public User(String username) {
         this.username = username;
-        this.turnScore =0;
+        this.turnScore = 0;
         this.totalScore = 0;
     }
 
@@ -32,7 +33,6 @@ public class User {
     public String getUsername() {
         return username;
     }
-
 
 
     public String getFullName() {
@@ -94,16 +94,20 @@ public class User {
     public int getNumberOfWins() {
         return numberOfWins;
     }
-    public void incrementNumberOfWins(){
+
+    public void incrementNumberOfWins() {
         this.numberOfWins++;
     }
-    public void resetTurnScore(){
+
+    public void resetTurnScore() {
         this.turnScore = 0;
     }
-    public void changeTurnScore(int rollValue){
+
+    public void changeTurnScore(int rollValue) {
         this.turnScore += rollValue;
     }
-    public void saveScore(){
+
+    public void saveScore() {
         this.totalScore += this.turnScore;
         resetTurnScore();
     }
