@@ -44,7 +44,7 @@ public class LeaderboardController extends ChildController {
                     users.add(UserRepository.find(res.getString("username")));
                 }
             }
-            for (int i = 0; i < users.size(); i++) {
+            for (int i = 0; i < 10; i++) {
                 players[i].setText(users.get(i).getUsername());
                 countries[i].setText(users.get(i).getCountry());
                 scores[i].setText(users.get(i).getScore() + "");

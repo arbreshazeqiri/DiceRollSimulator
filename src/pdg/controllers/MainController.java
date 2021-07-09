@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -44,7 +45,6 @@ public class MainController extends BaseController {
     CheckMenuItem alMenuItem;
 
     public boolean enSelected;
-
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
@@ -82,15 +82,15 @@ public class MainController extends BaseController {
         }
 
         ChildController controller = loader.getController();
+        loadView(screen, node, controller);
+    }
+    public void loadView(String screen, Parent pane, ChildController controller) throws Exception{
         controller.setParentController(this);
-        ResourceBundle langBundle = getLangBundle();
-        controller.loadLangTexts(langBundle);
+        this.childController = controller;
 
         contentPane.getChildren().clear();
-        contentPane.getChildren().add(node);
-        VBox.setVgrow(node, Priority.ALWAYS);
-
-
+        contentPane.getChildren().add(pane);
+        VBox.setVgrow(pane, Priority.ALWAYS);
         switch (screen) {
             case LEADERBOARD_VIEW:
                 contentPane.setAlignment(Pos.CENTER);
@@ -107,6 +107,9 @@ public class MainController extends BaseController {
             default:
                 throw new Exception("ERR_SCREEN_NOT_FOUND");
         }
+        ResourceBundle langBundle = getLangBundle();
+        controller.loadLangTexts(langBundle);
+
     }
 
     @FXML
@@ -124,15 +127,6 @@ public class MainController extends BaseController {
             this.loadView(PROFILE_VIEW);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void onPlayAgainClick(ActionEvent event) {
-        try {
-            this.loadView(PROFILE_VIEW);
-        } catch (Exception e) {
-
         }
     }
 
@@ -249,6 +243,8 @@ public class MainController extends BaseController {
     private Button msLead;
     @FXML
     private Button msProf;
+    @FXML
+    private Menu fileButt;
 
     private String viewPath(String view) {
         return VIEW_PATH + "/" + view + ".fxml";
@@ -269,6 +265,7 @@ public class MainController extends BaseController {
             String logoutButton = langBundle.getString("log_out_button");
             String aboutButton = langBundle.getString("about");
             String anewGameButton = langBundle.getString("anew_game_button");
+            String file = langBundle.getString("file_button");
 
 
             msLang.setText(msLangu);
@@ -282,6 +279,7 @@ public class MainController extends BaseController {
             msProf.setText(msProfile);
             onAboutButton.setText(aboutButton);
             onNewGameButton.setText(anewGameButton);
+            fileButt.setText(file);
 
 
             if (this.childController != null) {

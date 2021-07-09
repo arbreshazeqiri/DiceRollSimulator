@@ -80,7 +80,7 @@ public class LoginController extends BaseController {
                 }
                 catch (Exception ex)
                 {
-                    ErrorPopupComponent.show(ex.toString());
+                   ex.printStackTrace();
                 }
             }
 

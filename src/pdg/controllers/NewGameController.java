@@ -9,7 +9,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import pdg.models.Game;
+import pdg.models.LangEnum;
 import pdg.repositories.UserRepository;
+import pdg.utils.AppConfig;
 import pdg.utils.SessionManager;
 
 import java.io.File;
@@ -74,6 +76,8 @@ public class NewGameController extends ChildController{
         if(pig.checkIfUserCurrent()){
             p1box.setOpacity(0.7);
             p2box.setOpacity(0.5);
+            rollButton.setVisible(true);
+            holdButton.setVisible(true);
         }
         else{
             p2box.setOpacity(0.7);
@@ -95,7 +99,12 @@ public class NewGameController extends ChildController{
             playagainButton.setOpacity(1);
             rollButton.setDisable(true);
             holdButton.setDisable(true);
-            winnerLabel.setText(pig.getCurrent().getUsername() + " is the winner.");
+            boolean enSelected = AppConfig.get().getLanguage() == LangEnum.EN;
+            if(enSelected) {
+                winnerLabel.setText(pig.getCurrent().getUsername() + " is the winner.");
+            }else{
+                winnerLabel.setText(pig.getCurrent().getUsername() + " është fitues.");
+            }
             if(SessionManager.user.getUsername() == pig.getCurrent().getUsername()) {
                 SessionManager.user.incrementNumberOfWins();
             }
@@ -122,6 +131,8 @@ public class NewGameController extends ChildController{
     public void playComputer() {
         Random random = new Random();
         int pcMove = random.nextInt(4); //for value 1 hold
+        rollButton.setVisible(false);
+        holdButton.setVisible(false);
         if (pcMove == 1) {
             holdButton.fire();
         }

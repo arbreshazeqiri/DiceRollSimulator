@@ -42,7 +42,7 @@
                 </HBox>
                 <MenuBar styleClass="context-menu">
                     <menus>
-                        <Menu mnemonicParsing="false" text="File">
+                        <Menu fx:id="fileButt" mnemonicParsing="false" text="File">
                             <items>
                                 <MenuItem fx:id="onLogoutMenuClick" mnemonicParsing="false" onAction="#onLogoutMenuClick" text="Log Out">
                                     <accelerator>
