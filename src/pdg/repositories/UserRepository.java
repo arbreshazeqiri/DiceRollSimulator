@@ -31,7 +31,7 @@ public class UserRepository {
     }
     public static User find(String username) throws Exception {
         Connection conn = DbHelper.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user_account WHERE username = ? LIMIT 1");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user_account where username = ?");
         stmt.setString(1, username);
 
         ResultSet res = stmt.executeQuery();

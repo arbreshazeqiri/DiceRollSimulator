@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.input.KeyCodeCombination?>
 <VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="680.0" minWidth="992.0" spacing="15.0" styleClass="form-wrapper" stylesheets="@../resources/styles/app.css" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pdg.controllers.LoginController">
     <children>
         <GridPane alignment="CENTER" hgap="15.0" styleClass="form-wrapper" vgap="10.0">
@@ -32,7 +31,7 @@
             <children>
                 <TextField fx:id="username" promptText="Username" GridPane.columnSpan="2" GridPane.rowIndex="3" />
             <PasswordField fx:id="password" promptText="Password" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Log in" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                <Button fx:id="loginButt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Log in" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <image>
                   <Image url="@../resources/images/pdg-name.jpg" />

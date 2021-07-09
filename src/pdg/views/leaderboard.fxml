@@ -61,46 +61,46 @@
             <Label prefHeight="43.0" prefWidth="166.0" text="4" textFill="WHITE" GridPane.rowIndex="5" />
             <Label prefHeight="43.0" prefWidth="164.0" text="3" textFill="WHITE" GridPane.rowIndex="4" />
             <Label prefHeight="43.0" prefWidth="166.0" text="2" textFill="WHITE" GridPane.rowIndex="3" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-            <TextField GridPane.columnIndex="4" GridPane.rowIndex="7" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="9" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="11" />
-            <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="11" />
-            <TextField editable="false" GridPane.columnIndex="4" GridPane.rowIndex="10" />
+             <TextField fx:id="p1" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+             <TextField fx:id="c1" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+             <TextField fx:id="s1" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+             <TextField fx:id="w1" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+             <TextField fx:id="p2" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+             <TextField fx:id="c2" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+             <TextField fx:id="s2" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+             <TextField fx:id="w2" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+             <TextField fx:id="p3" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+             <TextField fx:id="c3" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+             <TextField fx:id="s3" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+             <TextField fx:id="w3" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+             <TextField fx:id="p4" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+             <TextField fx:id="c4" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+             <TextField fx:id="p5" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+             <TextField fx:id="s4" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+             <TextField fx:id="w4" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+             <TextField fx:id="c5" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+             <TextField fx:id="s5" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+             <TextField fx:id="w5" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+             <TextField fx:id="p6" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+             <TextField fx:id="c6" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+             <TextField fx:id="p7" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+             <TextField fx:id="s9" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+             <TextField fx:id="s8" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+             <TextField fx:id="c10" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+             <TextField fx:id="c9" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+             <TextField fx:id="p10" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+             <TextField fx:id="p9" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+             <TextField fx:id="c8" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+             <TextField fx:id="p8" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+             <TextField fx:id="w7" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+             <TextField fx:id="s7" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+             <TextField fx:id="w6" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+             <TextField fx:id="s6" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+             <TextField fx:id="c7" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+             <TextField fx:id="w8" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+             <TextField fx:id="w10" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="11" />
+             <TextField fx:id="s10" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+             <TextField fx:id="w9" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="10" />
          </children>
       </GridPane>
    </children>

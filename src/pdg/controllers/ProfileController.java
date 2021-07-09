@@ -5,7 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pdg.utils.SessionManager;
-
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,6 +35,7 @@ public class ProfileController extends ChildController {
         countryImage.setImage(new Image(f.toURI().toString()));
     }
     private ChildController childController = null;
+
     @Override
     public void loadLangTexts(ResourceBundle langBundle) {
         String pfFullName = langBundle.getString("pf_full_name");
