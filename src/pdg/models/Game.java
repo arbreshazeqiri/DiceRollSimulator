@@ -40,6 +40,7 @@ public class Game {
         else {
             current = player;
         }
+        getDie().setTop(1);
     }
 
     public void roll() {

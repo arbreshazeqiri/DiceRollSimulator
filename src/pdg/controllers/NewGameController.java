@@ -125,7 +125,9 @@ public class NewGameController extends ChildController{
         if (pcMove == 1) {
             holdButton.fire();
         }
-        rollButton.fire();
+        else {
+            rollButton.fire();
+        }
     }
     public void checkTurn(){
         if(pig.getCurrent().equals(pig.getComputer())){
@@ -161,9 +163,9 @@ public class NewGameController extends ChildController{
     public void hold(){
         pig.hold();
 
-        if (!pig.gameOver()) {
-            pig.switchTurn();
-        }
+       if (!pig.gameOver()) {
+           pig.switchTurn();
+       }
 
         updateView();
         checkTurn();
