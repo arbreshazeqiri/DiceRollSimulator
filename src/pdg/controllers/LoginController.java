@@ -44,7 +44,7 @@ public class LoginController extends BaseController {
                 loginMessageLabel.setText("Username or Password is empty!");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            ErrorPopupComponent.show(e.toString());
         }
     }
 
@@ -80,7 +80,7 @@ public class LoginController extends BaseController {
                 }
                 catch (Exception ex)
                 {
-                   ex.printStackTrace();
+                    ErrorPopupComponent.show(ex.toString());
                 }
             }
 
@@ -98,7 +98,7 @@ public class LoginController extends BaseController {
                 primaryStage.setScene(scene);
                 primaryStage.show();
             } catch (Exception e) {
-                e.printStackTrace();
+                ErrorPopupComponent.show(e.toString());
             }
     }
 
