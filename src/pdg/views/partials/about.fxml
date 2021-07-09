@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,12 +19,15 @@
                 </ImageView>
             </children>
         </StackPane>
-        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="5.0" stylesheets="@../../resources/styles/app.css" HBox.hgrow="ALWAYS">
+        <VBox alignment="CENTER_LEFT" prefHeight="212.0" prefWidth="75.0" spacing="5.0" stylesheets="@../../resources/styles/app.css" HBox.hgrow="ALWAYS">
             <children>
-                <Label fx:id="appNameLabel"  text="Pig Dice Game" wrapText="true" />
-                <Label fx:id="versionLabel"  text="Version: 1.0.0"  wrapText="true" />
+                <Label fx:id="appNameLabel" text="Pig Dice Game" wrapText="true" />
+                <Label fx:id="versionLabel" text="Version: 1.0.0" wrapText="true" />
                 <Label fx:id="releasedLabel" text="Released: July, 2021" wrapText="true" />
             </children>
+         <HBox.margin>
+            <Insets left="-10.0" />
+         </HBox.margin>
         </VBox>
     </children>
 </HBox>

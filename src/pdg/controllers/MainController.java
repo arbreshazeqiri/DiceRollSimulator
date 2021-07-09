@@ -1,5 +1,7 @@
 package pdg.controllers;
 
+import com.sun.tools.javac.Main;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,16 +39,16 @@ public class MainController extends BaseController {
     private Label loggedInUserLabel;
 
     @FXML
-    private CheckMenuItem enMenuItem;
+    CheckMenuItem enMenuItem;
     @FXML
-    private CheckMenuItem alMenuItem;
+     CheckMenuItem alMenuItem;
 
-
+    public boolean enSelected;
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
         super.initialize(url, bundle);
-        boolean enSelected = AppConfig.get().getLanguage() == LangEnum.EN;
+        enSelected = AppConfig.get().getLanguage() == LangEnum.EN;
         enMenuItem.setSelected(enSelected);
         alMenuItem.setSelected(!enSelected);
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -197,7 +199,6 @@ public class MainController extends BaseController {
         enMenuItem.setSelected(false);
         alMenuItem.setSelected(true);
         updateLanguage();
-
     }
     @FXML
     public void onEnMenuItemCLick(ActionEvent ev){
@@ -224,8 +225,6 @@ public class MainController extends BaseController {
     private ChildController childController = null;
 
 
-
-
     @FXML
     private SplitMenuButton msLang;
     @FXML
@@ -245,8 +244,6 @@ public class MainController extends BaseController {
     @FXML
     private Label nav;
     @FXML
-    private Label sectionTit;
-    @FXML
     private Button msLead;
     @FXML
     private Button msProf;
@@ -264,7 +261,6 @@ try {
     String newGameButton = langBundle.getString("new_game_button");
     String helpButton = langBundle.getString("help_button");
     String navigation = langBundle.getString("navigation");
-    String sectionTitle = langBundle.getString("section_title");
     String msLeaderboard = langBundle.getString("ms_leaderboard");
     String msProfile = langBundle.getString("ms_profile");
     String logoutButton = langBundle.getString("log_out_button");
@@ -279,7 +275,6 @@ try {
     newGameButt.setText(newGameButton);
     helpButt.setText(helpButton);
     nav.setText(navigation);
-    sectionTit.setText(sectionTitle);
     msLead.setText(msLeaderboard);
     msProf.setText(msProfile);
     onAboutButton.setText(aboutButton);

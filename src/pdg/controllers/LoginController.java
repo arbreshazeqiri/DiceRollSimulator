@@ -6,26 +6,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pdg.components.ErrorPopupComponent;
+import pdg.models.LangEnum;
 import pdg.models.User;
 import pdg.repositories.UserRepository;
+import pdg.utils.AppConfig;
 import pdg.utils.SecurityHelper;
 import pdg.utils.SessionManager;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
-public class LoginController extends BaseController {
 
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-    }
+public class LoginController extends BaseController {
 
     @FXML
     private Label loginMessageLabel;
@@ -104,7 +102,6 @@ public class LoginController extends BaseController {
             }
     }
 
-
     @FXML
     private Button loginButt;
 
@@ -112,17 +109,22 @@ public class LoginController extends BaseController {
     private Button signUpButt;
 
     private ChildController childController = null;
+
     @Override
     public void loadLangTexts(ResourceBundle langBundle) {
         String logInUsername = langBundle.getString("log_in_username");
         String logInPassword = langBundle.getString("log_in_password");
         String logInButton= langBundle.getString("log_in_button");
         String signUpButton = langBundle.getString("sign_up_button");
-
-        username.setText(logInUsername);
-        password.setText(logInPassword);
-        loginButt.setText(logInButton);
-        signUpButt.setText(signUpButton);
+try {
+    username.setPromptText(logInUsername);
+    password.setPromptText(logInPassword);
+    loginButt.setText(logInButton);
+    signUpButt.setText(signUpButton);
+}
+catch(Exception e){
+    e.printStackTrace();
+}
 
         if(this.childController != null){
             this.childController.loadLangTexts(langBundle);

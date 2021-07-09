@@ -177,6 +177,8 @@ public class NewGameController extends ChildController{
         File f = new File("src/pdg/resources/images/dice"+top+".png");
         dieImage.setImage(new Image(f.toURI().toString()));
     }
+
+
     @Override
     public void loadLangTexts(ResourceBundle langBundle) {
         String computer = langBundle.getString("computer");

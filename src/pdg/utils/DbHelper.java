@@ -9,7 +9,7 @@ public class DbHelper {
 
     public static Connection getConnection() throws Exception {
         if (conn == null || conn.isClosed()) {
-            conn = DriverManager.getConnection(AppConfig.get().getConnectionString(), "root", "9621");
+            conn = DriverManager.getConnection(AppConfig.get().getConnectionString(), "root", "");
         }
 
         return conn;

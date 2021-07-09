@@ -66,13 +66,14 @@ public class SignupController extends ChildController {
     private PasswordField confirmPasswordField;
     @FXML
     private Label registerMessageLabel, registerMessageLabel1;
-    private ChildController childController = null;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.addAll("Albania", "Kosovo");
         choiceBox.setItems(list);
+        super.initialize(url, rb);
     }
 
     @FXML
@@ -80,11 +81,10 @@ public class SignupController extends ChildController {
         try {
             if (!usernameField.getText().isBlank() && !fullnameField.getText().isBlank() && !emailField.getText().isBlank() && !passwordField.getText().isBlank() && !confirmPasswordField.getText().isBlank() && !choiceBox.getSelectionModel().isEmpty()) {
                 if (passwordField.getText().equals(confirmPasswordField.getText())) {
-                    if(passwordField.getLength() > 5){
+                    if (passwordField.getLength() > 5) {
                         emailValidation(event);
                         registerMessageLabel1.setText("");
-                    }
-                    else{
+                    } else {
                         registerMessageLabel1.setText("Password must be at least 6 characters.");
                     }
                 } else {
@@ -109,7 +109,7 @@ public class SignupController extends ChildController {
             if (!UserRepository.findByEmail(emailField.getText())) {
                 if (!UserRepository.findByUsername(usernameField.getText())) {
                     String salt = SecurityHelper.generateSalt();
-                    String hashedpassword = SecurityHelper.computeHash(passwordField.getText(),salt);
+                    String hashedpassword = SecurityHelper.computeHash(passwordField.getText(), salt);
                     try {
                         User user = UserRepository.create(usernameField.getText(), fullnameField.getText(), emailField.getText().toLowerCase(), hashedpassword, salt, choiceBox.getValue().toString());
                         SessionManager.user = user;
@@ -175,6 +175,9 @@ public class SignupController extends ChildController {
     private String viewPath2(String view) {
         return VIEW_PATH + "/" + view + ".fxml";
     }
+
+    private ChildController childController = null;
+
     @Override
     public void loadLangTexts(ResourceBundle langBundle) {
         String suUsername = langBundle.getString("su_username");
@@ -185,17 +188,21 @@ public class SignupController extends ChildController {
         String suCountry = langBundle.getString("su_country");
         String suCancelButton = langBundle.getString("su_cancel_button");
         String suRegisterButton = langBundle.getString("su_register_button");
+        try {
+            suUser.setText(suUsername);
+            suFull.setText(suFullName);
+            suEmail_.setText(suEmail);
+            suPass.setText(suPassword);
+            suConPass.setText(suConfirmPassword);
+            suCount.setText(suCountry);
+            cancelButton.setText(suCancelButton);
+            RegisterId.setText(suRegisterButton);
+            choiceBox.setPromptText(suCountry);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        suUser.setText(suUsername);
-        suFull.setText(suFullName);
-        suEmail_.setText(suEmail);
-        suPass.setText(suPassword);
-        suConPass.setText(suConfirmPassword);
-        suCount.setText(suCountry);
-        cancelButton.setText(suCancelButton);
-        RegisterId.setText(suRegisterButton);
-
-        if(this.childController != null){
+        if (this.childController != null) {
             this.childController.loadLangTexts(langBundle);
         }
     }
