@@ -29,10 +29,10 @@
                         </ImageView>
                         <Label text="Pig Dice Game" />
                         <Region HBox.hgrow="ALWAYS" />
-                        <SplitMenuButton mnemonicParsing="false" text="Lang">
+                        <SplitMenuButton fx:id="msLang" mnemonicParsing="false" text="Lang">
                             <items>
-                                <CheckMenuItem mnemonicParsing="false" text="English" />
-                                <CheckMenuItem mnemonicParsing="false" text="Shqip" />
+                                <CheckMenuItem fx:id="enMenuItem" mnemonicParsing="false" onAction="#onEnMenuItemCLick" text="English" />
+                                <CheckMenuItem fx:id="alMenuItem" mnemonicParsing="false" onAction="#onAlMenuItemCLick" text="Shqip" />
                             </items>
                         </SplitMenuButton>
                     </children>
@@ -56,7 +56,7 @@
                                 </MenuItem>
                             </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="New Game">
+                        <Menu fx:id="newGameButt" mnemonicParsing="false" text="New Game">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#onNewGameMenuClick" text="Play a New Game">
                                     <accelerator>
@@ -65,7 +65,7 @@
                                 </MenuItem>
                             </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="Help">
+                        <Menu fx:id="helpButt" mnemonicParsing="false" text="Help">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#onAboutClick" text="About">
                            <accelerator>
@@ -83,12 +83,12 @@
             <children>
                 <HBox>
                     <children>
-                        <Label styleClass="nav-label" text="Navigation" textFill="#fffefe" />
+                        <Label fx:id="nav" styleClass="nav-label" text="Navigation" textFill="#fffefe" />
                     </children>
                 </HBox>
-                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onLeaderboardNavClick" styleClass="nav-link" text="Leaderboard" />
-                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onProfileNavClick" styleClass="nav-link" text="Profile" />
-                <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onLogoutNavClick" styleClass="nav-link" text="Logout" />
+                <Button fx:id="msLead" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onLeaderboardNavClick" styleClass="nav-link" text="Leaderboard" />
+                <Button fx:id="msProf" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onProfileNavClick" styleClass="nav-link" text="Profile" />
+                <Button fx:id="logOutButt" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" mnemonicParsing="false" onAction="#onLogoutNavClick" styleClass="nav-link" text="Logout" />
             </children>
         </VBox>
     </left>
@@ -113,7 +113,7 @@
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                     </padding>
                     <children>
-                        <Label text="Section title" />
+                        <Label fx:id="sectionTit" text="Section title" />
                     </children>
                 </HBox>
                 <VBox fx:id="contentPane" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />

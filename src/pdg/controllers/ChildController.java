@@ -1,11 +1,15 @@
 package pdg.controllers;
 
-import javafx.fxml.Initializable;
+import java.util.ResourceBundle;
 
-public abstract class ChildController implements Initializable {
+public abstract class ChildController extends BaseController {
     public MainController parentController;
 
     public void setParentController(MainController controller) {
         this.parentController = controller;
+    }
+    @Override
+    public void loadLangTexts(ResourceBundle langBundle) {
+
     }
 }

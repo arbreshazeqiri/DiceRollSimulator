@@ -34,17 +34,17 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Username" GridPane.rowIndex="1" />
+                        <Label fx:id="suUser" text="Username" GridPane.rowIndex="1" />
                         <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-                        <Label text="Full Name" GridPane.rowIndex="2" />
+                        <Label fx:id="suFull" text="Full Name" GridPane.rowIndex="2" />
                         <TextField fx:id="fullnameField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                        <Label text="Email" GridPane.rowIndex="3" />
+                        <Label fx:id="suEmail_" text="Email" GridPane.rowIndex="3" />
                         <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                        <Label text="Password" GridPane.rowIndex="5" />
+                        <Label fx:id="suPass" text="Password" GridPane.rowIndex="5" />
                         <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-                        <Label text="Confirm Password" GridPane.rowIndex="6" />
+                        <Label fx:id="suConPass" text="Confirm Password" GridPane.rowIndex="6" />
                         <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-                        <Label text="Country" GridPane.rowIndex="7" />
+                        <Label fx:id="suCount" text="Country" GridPane.rowIndex="7" />
                         <Button fx:id="cancelButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCancelButtonClick" styleClass="btn-dark" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <Button fx:id="RegisterId" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRegisterButtonClick" text="Register" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                   <Label fx:id="registerMessageLabel" alignment="CENTER" prefHeight="28.0" prefWidth="329.0" textFill="#0231a1" GridPane.columnSpan="3">

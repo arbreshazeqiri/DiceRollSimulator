@@ -3,10 +3,10 @@ package pdg.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -21,7 +21,7 @@ import pdg.utils.SessionManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class LoginController extends BaseController {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -102,5 +102,30 @@ public class LoginController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+    }
+
+
+    @FXML
+    private Button loginButt;
+
+    @FXML
+    private Button signUpButt;
+
+    private ChildController childController = null;
+    @Override
+    public void loadLangTexts(ResourceBundle langBundle) {
+        String logInUsername = langBundle.getString("log_in_username");
+        String logInPassword = langBundle.getString("log_in_password");
+        String logInButton= langBundle.getString("log_in_button");
+        String signUpButton = langBundle.getString("sign_up_button");
+
+        username.setText(logInUsername);
+        password.setText(logInPassword);
+        loginButt.setText(logInButton);
+        signUpButt.setText(signUpButton);
+
+        if(this.childController != null){
+            this.childController.loadLangTexts(langBundle);
+        }
     }
 }

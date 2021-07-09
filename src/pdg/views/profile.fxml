@@ -41,19 +41,19 @@
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="17.0" prefWidth="104.0" text="Username:" GridPane.rowIndex="3">
+            <Label fx:id="usernameLabel" prefHeight="17.0" prefWidth="104.0" text="Username:" GridPane.rowIndex="3">
                <padding>
                   <Insets left="20.0" />
                </padding></Label>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Email:" GridPane.rowIndex="4">
+            <Label fx:id="emailLabel" prefHeight="17.0" prefWidth="103.0" text="Email:" GridPane.rowIndex="4">
                <padding>
                   <Insets left="20.0" />
                </padding></Label>
-            <Label prefHeight="17.0" prefWidth="100.0" text="Country:" GridPane.rowIndex="7">
+            <Label fx:id="countryLabel" prefHeight="17.0" prefWidth="100.0" text="Country:" GridPane.rowIndex="7">
                <padding>
                   <Insets left="20.0" />
                </padding></Label>
-            <Label prefHeight="17.0" prefWidth="100.0" text="Wins:" GridPane.rowIndex="6">
+            <Label fx:id="winsLabel" prefHeight="17.0" prefWidth="100.0" text="Wins:" GridPane.rowIndex="6">
                <padding>
                   <Insets left="20.0" />
                </padding></Label>
@@ -76,7 +76,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="31.0" layoutY="368.0" prefHeight="30.0" prefWidth="76.0" text="Score:" GridPane.rowIndex="5">
+            <Label fx:id="scoreLabel" layoutX="31.0" layoutY="368.0" prefHeight="30.0" prefWidth="76.0" text="Score:" GridPane.rowIndex="5">
                <padding>
                   <Insets left="20.0" />
                </padding>

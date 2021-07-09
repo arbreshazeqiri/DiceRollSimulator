@@ -22,6 +22,7 @@ public class NewGameController extends ChildController{
     Game pig;
     private Roller clock;
 
+
     @FXML
     ImageView dieImage;
     @FXML
@@ -35,9 +36,11 @@ public class NewGameController extends ChildController{
 
     @FXML
     GridPane p1box, p2box;
-
+    @FXML
+    private Label current_;
     @FXML
     Label winnerLabel;
+    private ChildController childController = null;
 
     @Override
     public void initialize(URL url, ResourceBundle bundle){
@@ -171,5 +174,25 @@ public class NewGameController extends ChildController{
         }
         File f = new File("src/pdg/resources/images/dice"+top+".png");
         dieImage.setImage(new Image(f.toURI().toString()));
+    }
+    @Override
+    public void loadLangTexts(ResourceBundle langBundle) {
+        String player1 = langBundle.getString("player_1");
+        String computer = langBundle.getString("computer");
+        String current = langBundle.getString("current");
+        String roll = langBundle.getString("roll");
+        String playAgain = langBundle.getString("play_again");
+        String hold = langBundle.getString("hold");
+
+        playerOneLabel.setText(player1);
+        playerTwoLabel.setText(computer);
+        current_.setText(current);
+        rollButton.setText(roll);
+        holdButton.setText(hold);
+        playagainButton.setText(playAgain);
+
+        if(this.childController != null){
+            this.childController.loadLangTexts(langBundle);
+        }
     }
 }

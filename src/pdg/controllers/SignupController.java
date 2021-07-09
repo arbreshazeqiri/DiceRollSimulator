@@ -5,15 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -25,21 +21,34 @@ import pdg.utils.SecurityHelper;
 import pdg.utils.SessionManager;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class SignupController implements Initializable {
+public class SignupController extends ChildController {
     public final String SIGN_UP_VIEW = "signup";
     public final String LOG_IN_VIEW2 = "login";
 
     private static final String VIEW_PATH = "../views";
 
+    @FXML
+    private Label suUser;
+    @FXML
+    private Label suFull;
+    @FXML
+    private Label suEmail_;
+    @FXML
+    private Label suPass;
+    @FXML
+    private Label suConPass;
+    @FXML
+    private Label suCount;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button RegisterId;
     @FXML
     private VBox contentPane2;
 
@@ -57,6 +66,7 @@ public class SignupController implements Initializable {
     private PasswordField confirmPasswordField;
     @FXML
     private Label registerMessageLabel, registerMessageLabel1;
+    private ChildController childController = null;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -164,6 +174,30 @@ public class SignupController implements Initializable {
 
     private String viewPath2(String view) {
         return VIEW_PATH + "/" + view + ".fxml";
+    }
+    @Override
+    public void loadLangTexts(ResourceBundle langBundle) {
+        String suUsername = langBundle.getString("su_username");
+        String suFullName = langBundle.getString("su_full_name");
+        String suEmail = langBundle.getString("su_email");
+        String suPassword = langBundle.getString("su_password");
+        String suConfirmPassword = langBundle.getString("su_confirm_password");
+        String suCountry = langBundle.getString("su_country");
+        String suCancelButton = langBundle.getString("su_cancel_button");
+        String suRegisterButton = langBundle.getString("su_register_button");
+
+        suUser.setText(suUsername);
+        suFull.setText(suFullName);
+        suEmail_.setText(suEmail);
+        suPass.setText(suPassword);
+        suConPass.setText(suConfirmPassword);
+        suCount.setText(suCountry);
+        cancelButton.setText(suCancelButton);
+        RegisterId.setText(suRegisterButton);
+
+        if(this.childController != null){
+            this.childController.loadLangTexts(langBundle);
+        }
     }
 }
 

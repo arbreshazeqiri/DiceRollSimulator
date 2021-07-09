@@ -37,8 +37,8 @@
                <image>
                   <Image url="@../resources/images/pdg-name.jpg" />
                </image></ImageView>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSignupButtonClick" text="Sign up" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-            <Label fx:id="loginMessageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="216.0" textFill="#ee0707" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                <Button fx:id="signUpButt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSignupButtonClick" text="Sign up" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                <Label fx:id="loginMessageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="216.0" textFill="#ee0707" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
