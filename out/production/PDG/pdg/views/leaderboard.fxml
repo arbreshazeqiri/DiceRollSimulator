@@ -43,14 +43,14 @@
                   <Image url="@../resources/images/leaderboard-icon-9.png" />
                </image>
             </ImageView>
-             <Label fx:id="leadPlayer" alignment="CENTER" prefHeight="43.0" prefWidth="256.0" text="Player" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-             <Label fx:id="leadCountry" alignment="CENTER" prefHeight="43.0" prefWidth="260.0" text="Country" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-             <Label fx:id="leadScore" alignment="CENTER" prefHeight="43.0" prefWidth="265.0" text="Score" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-             <Label fx:id="leadWins" alignment="CENTER" prefHeight="43.0" prefWidth="263.0" text="Wins" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="256.0" text="Player" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="260.0" text="Country" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="265.0" text="Score" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="263.0" text="Wins" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+             <Label fx:id="leadPlayer" alignment="CENTER" prefHeight="43.0" prefWidth="256.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+             <Label fx:id="leadCountry" alignment="CENTER" prefHeight="43.0" prefWidth="260.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+             <Label fx:id="leadScore" alignment="CENTER" prefHeight="43.0" prefWidth="265.0" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+             <Label fx:id="leadWins" alignment="CENTER" prefHeight="43.0" prefWidth="263.0" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="43.0" prefWidth="256.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="43.0" prefWidth="260.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="43.0" prefWidth="265.0" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="43.0" prefWidth="263.0" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Label prefHeight="43.0" prefWidth="167.0" text="1" textFill="WHITE" GridPane.rowIndex="2" />
             <Label prefHeight="42.0" prefWidth="169.0" text="10" textFill="WHITE" GridPane.rowIndex="11" />
             <Label prefHeight="42.0" prefWidth="169.0" text="9" textFill="WHITE" GridPane.rowIndex="10" />

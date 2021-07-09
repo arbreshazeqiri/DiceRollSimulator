@@ -36,8 +36,10 @@ public class NewGameController extends ChildController{
 
     @FXML
     GridPane p1box, p2box;
+
     @FXML
-    private Label current_;
+    private Label current2, current1;
+
     @FXML
     Label winnerLabel;
     private ChildController childController = null;
@@ -177,16 +179,15 @@ public class NewGameController extends ChildController{
     }
     @Override
     public void loadLangTexts(ResourceBundle langBundle) {
-        String player1 = langBundle.getString("player_1");
         String computer = langBundle.getString("computer");
         String current = langBundle.getString("current");
         String roll = langBundle.getString("roll");
         String playAgain = langBundle.getString("play_again");
         String hold = langBundle.getString("hold");
 
-        playerOneLabel.setText(player1);
         playerTwoLabel.setText(computer);
-        current_.setText(current);
+        current1.setText(current);
+        current2.setText(current);
         rollButton.setText(roll);
         holdButton.setText(hold);
         playagainButton.setText(playAgain);

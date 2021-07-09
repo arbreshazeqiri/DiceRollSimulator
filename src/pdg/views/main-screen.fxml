@@ -58,7 +58,7 @@
                         </Menu>
                         <Menu fx:id="newGameButt" mnemonicParsing="false" text="New Game">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#onNewGameMenuClick" text="Play a New Game">
+                                <MenuItem fx:id="onNewGameButton" mnemonicParsing="false" onAction="#onNewGameMenuClick" text="Play a New Game">
                                     <accelerator>
                                         <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                                     </accelerator>
@@ -67,7 +67,7 @@
                         </Menu>
                         <Menu fx:id="helpButt" mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#onAboutClick" text="About">
+                                <MenuItem fx:id="onAboutButton" mnemonicParsing="false" onAction="#onAboutClick" text="About">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
                            </accelerator></MenuItem>

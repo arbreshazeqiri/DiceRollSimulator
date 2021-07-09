@@ -20,9 +20,9 @@
         </StackPane>
         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="5.0" stylesheets="@../../resources/styles/app.css" HBox.hgrow="ALWAYS">
             <children>
-                <Label fx:id="appNameLabel" text="Pig Dice Game" wrapText="true" />
-                <Label fx:id="versionLabel" text="Version: 1.0.1" wrapText="true" />
-                <Label fx:id="releasedLabel" text="Released: July 2021" wrapText="true" />
+                <Label fx:id="appNameLabel"  text="Pig Dice Game" wrapText="true" />
+                <Label fx:id="versionLabel"  text="Version: 1.0.0"  wrapText="true" />
+                <Label fx:id="releasedLabel" text="Released: July, 2021" wrapText="true" />
             </children>
         </VBox>
     </children>
