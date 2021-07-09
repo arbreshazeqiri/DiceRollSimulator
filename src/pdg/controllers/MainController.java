@@ -41,9 +41,10 @@ public class MainController extends BaseController {
     @FXML
     CheckMenuItem enMenuItem;
     @FXML
-     CheckMenuItem alMenuItem;
+    CheckMenuItem alMenuItem;
 
     public boolean enSelected;
+
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
@@ -51,7 +52,7 @@ public class MainController extends BaseController {
         enSelected = AppConfig.get().getLanguage() == LangEnum.EN;
         enMenuItem.setSelected(enSelected);
         alMenuItem.setSelected(!enSelected);
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
         loggedInUserLabel.setText("@" + SessionManager.user.getUsername() + "   " + formatter.format(date));
     }
@@ -122,12 +123,12 @@ public class MainController extends BaseController {
         try {
             this.loadView(PROFILE_VIEW);
         } catch (Exception e) {
-          e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
     @FXML
-    public void onPlayAgainClick(ActionEvent event){
+    public void onPlayAgainClick(ActionEvent event) {
         try {
             this.loadView(PROFILE_VIEW);
         } catch (Exception e) {
@@ -148,8 +149,6 @@ public class MainController extends BaseController {
         }
     }
 
-    @FXML
-    private Label statusLabel;
 
     @FXML
     private void onLogoutMenuClick(ActionEvent event) {
@@ -157,7 +156,7 @@ public class MainController extends BaseController {
             Parent parent = FXMLLoader.load(getClass().getResource(viewPath("login")));
             Scene scene = new Scene(parent);
 
-            Stage primaryStage = (Stage) statusLabel.getScene().getWindow();
+            Stage primaryStage = (Stage) loggedInUserLabel.getScene().getWindow();
             primaryStage.setScene(scene);
 
             SessionManager.user = null;
@@ -170,7 +169,7 @@ public class MainController extends BaseController {
     @FXML
     private void onExitMenuClick(ActionEvent event) {
         try {
-            Stage primaryStage = (Stage) statusLabel.getScene().getWindow();
+            Stage primaryStage = (Stage) loggedInUserLabel.getScene().getWindow();
             primaryStage.close();
         } catch (Exception e) {
             ErrorPopupComponent.show(e.toString());
@@ -194,20 +193,22 @@ public class MainController extends BaseController {
         } catch (Exception e) {
         }
     }
+
     @FXML
-    public void onAlMenuItemCLick(ActionEvent ev){
+    public void onAlMenuItemCLick(ActionEvent ev) {
         enMenuItem.setSelected(false);
         alMenuItem.setSelected(true);
         updateLanguage();
     }
+
     @FXML
-    public void onEnMenuItemCLick(ActionEvent ev){
+    public void onEnMenuItemCLick(ActionEvent ev) {
         enMenuItem.setSelected(true);
         alMenuItem.setSelected(false);
         updateLanguage();
     }
 
-    private void updateLanguage(){
+    private void updateLanguage() {
         try {
             LangEnum lang = enMenuItem.isSelected() ? LangEnum.EN : LangEnum.AL;
             AppConfig conf = AppConfig.get();
@@ -215,13 +216,14 @@ public class MainController extends BaseController {
 
             ResourceBundle bundle = getLangBundle();
             loadLangTexts(bundle);
-            if(this.childController != null) {
+            if (this.childController != null) {
                 this.childController.loadLangTexts(bundle);
             }
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ErrorPopupComponent.show(ex.toString());
         }
     }
+
     private ChildController childController = null;
 
 
@@ -251,43 +253,44 @@ public class MainController extends BaseController {
     private String viewPath(String view) {
         return VIEW_PATH + "/" + view + ".fxml";
     }
+
     @Override
     public void loadLangTexts(ResourceBundle langBundle) {
-try {
+        try {
 
-    String msLangu = langBundle.getString("ms_lang");
-    String logOutButton = langBundle.getString("log_out_button");
-    String closeButton = langBundle.getString("close_button");
-    String newGameButton = langBundle.getString("new_game_button");
-    String helpButton = langBundle.getString("help_button");
-    String navigation = langBundle.getString("navigation");
-    String msLeaderboard = langBundle.getString("ms_leaderboard");
-    String msProfile = langBundle.getString("ms_profile");
-    String logoutButton = langBundle.getString("log_out_button");
-    String aboutButton = langBundle.getString("about");
-    String anewGameButton = langBundle.getString("anew_game_button");
-
-
-    msLang.setText(msLangu);
-    logOutButt.setText(logOutButton);
-    onExitMenuClick.setText(closeButton);
-    onLogoutMenuClick.setText(logoutButton);
-    newGameButt.setText(newGameButton);
-    helpButt.setText(helpButton);
-    nav.setText(navigation);
-    msLead.setText(msLeaderboard);
-    msProf.setText(msProfile);
-    onAboutButton.setText(aboutButton);
-    onNewGameButton.setText(anewGameButton);
+            String msLangu = langBundle.getString("ms_lang");
+            String logOutButton = langBundle.getString("log_out_button");
+            String closeButton = langBundle.getString("close_button");
+            String newGameButton = langBundle.getString("new_game_button");
+            String helpButton = langBundle.getString("help_button");
+            String navigation = langBundle.getString("navigation");
+            String msLeaderboard = langBundle.getString("ms_leaderboard");
+            String msProfile = langBundle.getString("ms_profile");
+            String logoutButton = langBundle.getString("log_out_button");
+            String aboutButton = langBundle.getString("about");
+            String anewGameButton = langBundle.getString("anew_game_button");
 
 
-    if (this.childController != null) {
-        this.childController.loadLangTexts(langBundle);
+            msLang.setText(msLangu);
+            logOutButt.setText(logOutButton);
+            onExitMenuClick.setText(closeButton);
+            onLogoutMenuClick.setText(logoutButton);
+            newGameButt.setText(newGameButton);
+            helpButt.setText(helpButton);
+            nav.setText(navigation);
+            msLead.setText(msLeaderboard);
+            msProf.setText(msProfile);
+            onAboutButton.setText(aboutButton);
+            onNewGameButton.setText(anewGameButton);
+
+
+            if (this.childController != null) {
+                this.childController.loadLangTexts(langBundle);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-}
-catch (Exception e){
-    e.printStackTrace();
-}
 
-    }
 }

@@ -11,7 +11,6 @@ public class DbHelper {
         if (conn == null || conn.isClosed()) {
             conn = DriverManager.getConnection(AppConfig.get().getConnectionString(), "root", "");
         }
-
         return conn;
     }
 
