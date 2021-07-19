@@ -46,6 +46,8 @@ public class NewGameController extends ChildController{
     Label winnerLabel;
     private ChildController childController = null;
 
+    private  boolean enSelected;
+
     @Override
     public void initialize(URL url, ResourceBundle bundle){
         startGame();
@@ -54,7 +56,13 @@ public class NewGameController extends ChildController{
     public void startGame(){
         p1box.setOpacity(0.7);
         clock = new Roller();
-        pig = new Game(SessionManager.user.getUsername(), "Computer");
+        enSelected = AppConfig.get().getLanguage() == LangEnum.EN;
+        if(enSelected) {
+            pig = new Game(SessionManager.user.getUsername(), "Computer");
+        }
+        else {
+            pig = new Game(SessionManager.user.getUsername(), "Kompjuteri");
+        }
         playagainButton.setVisible(false);
         rollButton.setDisable(false);
         holdButton.setDisable(false);
@@ -99,7 +107,6 @@ public class NewGameController extends ChildController{
             playagainButton.setOpacity(1);
             rollButton.setDisable(true);
             holdButton.setDisable(true);
-            boolean enSelected = AppConfig.get().getLanguage() == LangEnum.EN;
             if(enSelected) {
                 winnerLabel.setText(pig.getCurrent().getUsername() + " is the winner.");
             }else{
